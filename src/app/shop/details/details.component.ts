@@ -7,6 +7,8 @@ import { Product } from '../../../interfaces/product';
 import { SignErrComponent } from '../../sign-err/sign-err.component';
 import { ToolsService } from '../../services/tools.service';
 import { SsrCookieService } from 'ngx-cookie-service-ssr';
+import { ApiAreaService } from '../../services/api-area.service';
+import { CartAreaService } from '../../services/cart-area.service';
 
 @Component({
   selector: 'app-details',
@@ -20,7 +22,9 @@ export class DetailsComponent implements OnInit {
     private service: ProductsAreaService,
     public router: Router,
     public tools: ToolsService,
-    private _cookie: SsrCookieService
+    private _cookie: SsrCookieService,
+    private apiArea: ApiAreaService,
+    private cartServ: CartAreaService
   ) {}
 
   ngOnInit(): void {
@@ -70,23 +74,18 @@ export class DetailsComponent implements OnInit {
     this.tools.isErrSMS.next(true);
   }
 
-  addToCart() {
-    alert('addedd');
-  }
+  
 
-  createAndAddCart() {
-    alert('createddddddd');
-  }
-
-  cartBTN() {
-    if (this._cookie.check('userInfo')) {
-      if (this._cookie.get('cartInfo') != '') {
-        this.addToCart();
-      } else {
-        this.createAndAddCart();
-      }
-    } else {
-      this.errorSMS();
+  cartBTN(id: string) {
+    const prodInfoCart = {
+      id: id,
+      quantity:this.prodQuant
     }
+
+    
+    this.apiArea.profileInfo().subscribe( (data:any) => {
+    data.cartID ? this.cartServ.addtoCart(prodInfoCart).subscribe() : this.cartServ.createCart(prodInfoCart).subscribe()
+      
+    } )
   }
 }

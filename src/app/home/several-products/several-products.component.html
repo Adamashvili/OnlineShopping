@@ -4,8 +4,9 @@
     
     @for (item of productList; track $index) {
   <div class="card">
+    <h6 [style.display]="item.stock > 0 ? 'none': 'unset'">{{item.stock <= 0 ? 'Out of Stock': ''}}</h6>
     <img
-      [src]="item.images[0]"
+      [src]="item.images[0].startsWith('https://alta.ge/') ? 'https://thumb.ac-illust.com/b1/b170870007dfa419295d949814474ab2_t.jpeg' : item.images[0] "
       alt="product"
     />
     <h4>{{item.title}}</h4>

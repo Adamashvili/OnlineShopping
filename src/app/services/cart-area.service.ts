@@ -8,6 +8,9 @@ export class CartAreaService {
 
   constructor(private http: HttpClient) { }
 
+  getCart () {
+    return this.http.get("https://api.everrest.educata.dev/shop/cart")
+  }
 
   createCart(body: any) {
     return this.http.post("https://api.everrest.educata.dev/shop/cart/product", body)
@@ -17,9 +20,17 @@ export class CartAreaService {
     return this.http.patch("https://api.everrest.educata.dev/shop/cart/product", body )
   }
 
-  
+
 
   deleteProduct(body: any) {
-    return this.http.delete("https://api.everrest.educata.dev/shop/cart/product", body)
+    return this.http.delete("https://api.everrest.educata.dev/shop/cart/product", {body: body})
+  }
+
+  removeAll() {
+    return this.http.delete("https://api.everrest.educata.dev/shop/cart")
+  }
+
+  checkOut() {
+    return this.http.post("https://api.everrest.educata.dev/shop/cart/checkout", "")
   }
 }

@@ -9,7 +9,7 @@ import { ToolsService } from '../services/tools.service';
 
 @Component({
   selector: 'app-navbar',
-  imports: [SignInComponent, SignUpComponent, ScrollingDirective, RouterModule],
+  imports: [SignInComponent, SignUpComponent, ScrollingDirective, RouterModule, RouterModule],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css',
 })
@@ -23,13 +23,15 @@ export class NavbarComponent implements OnInit {
     this.tools.isRegistered.subscribe((info: boolean) => {
       this.isRegisterShow = info
     })
+
+    this.profileInfoNav()
   }
 
   public isSignShow: boolean = false;
   public isRegisterShow: boolean = false;
   public isLoggedIn: any;
-  public userImg: any = sessionStorage.getItem('userAvatar');
-  public userName: any = sessionStorage.getItem('userName');
+  public userImg: any;
+  public userName: any ;
   public user: any;
 
   signInForm() {
@@ -58,8 +60,11 @@ export class NavbarComponent implements OnInit {
     this.isLoggedIn = logg;
   }
 
-  profileInfoNav(info: any) {
-    this.userImg = info.avatar;
-    this.userName = info.firstName;
+  profileInfoNav() {
+    this.tools.userNavbarInfo.subscribe( (data: any ) => {
+      this.userImg = data.avatar;
+      this.userName = data.firstName;
+      
+    } )
   }
 }

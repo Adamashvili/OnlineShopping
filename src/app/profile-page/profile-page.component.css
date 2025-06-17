@@ -1,0 +1,216 @@
+header {
+  height: 250px;
+  background-image: url("https://a-static.besthdwallpaper.com/mountains-minimalist-wallpaper-3440x1440-81063_15.jpg");
+  background-position: center;
+  background-size: cover;
+}
+
+.userHead {
+  display: flex;
+  padding: 30px 100px;
+  gap: 100px;
+  box-shadow: 0 2px 6px 1px rgb(230, 228, 228);
+  align-items: center;
+}
+
+.userHead img {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-top: -100px;
+  border: 7px solid white;
+}
+
+.infoHead {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  font-family: "Tilt Neon", sans-serif;
+}
+.infoHead h1 {
+  position: relative;
+  width: fit-content;
+
+  letter-spacing: 1px;
+}
+
+.infoHead h1 i {
+  position: absolute;
+  font-size: 15px;
+  right: -20px;
+  color: black;
+}
+
+.sideInfo {
+  display: flex;
+  gap: 30px;
+  color: grey;
+  font-weight: bold;
+  font-family: "Tilt Neon", sans-serif;
+}
+
+.sideInfo p {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+main {
+  max-width: 1200px;
+  min-height: 650px;
+  margin: 20px auto;
+  display: flex;
+  box-shadow: 0 0 10px 2px grey;
+  border-radius: 10px;
+  font-family: "Tilt Neon", sans-serif;
+}
+
+main .leftSide {
+  width: 70%;
+  padding: 30px;
+}
+
+.leftSide .cartHeading {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 30px;
+  align-items: center;
+}
+
+.leftSide .listItem {
+  padding: 20px;
+  border-top: 1px solid grey;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cartHeading h1 {
+  font-family: "Tilt Neon", sans-serif;
+}
+
+.listItem .title {
+  width: 300px;
+}
+
+.listItem .title h4:first-child {
+  color: grey;
+}
+
+.listItem {
+  font-family: "Tilt Neon", sans-serif;
+}
+
+.listItem .quantity {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.quantity button {
+  padding: 8px;
+  background-color: transparent;
+  border: 1px solid grey;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.quantity button:hover {
+  background-color: black;
+  color: white;
+}
+
+.leftSide .trash {
+  padding: 7px;
+  background-color: black;
+  cursor: pointer;
+  transition: 0.3s;
+  border: none;
+  border-radius: 3px;
+}
+
+.leftSide .trash:hover, .removeAll:hover {
+  background-color: darkred;
+}
+
+.trash i {
+  color: white;
+}
+
+.removeAll {
+    display: block;
+    margin-left: auto;
+    padding: 8px 15px;
+    background-color: black;
+    color: white;
+    font-family: "Tilt Neon", sans-serif;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+
+main .rightSide {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 60px 30px;
+  background-color: #dddddd;
+}
+
+.rightSide h1 {
+  font-family: "Tilt Neon", sans-serif;
+}
+
+.rightSide .shipping {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  font-family: "Tilt Neon", sans-serif;
+}
+
+.shipping input {
+  height: 45px;
+  padding-inline: 20px;
+  background-color: #f7f7f7;
+  border: none;
+  outline: none;
+  font-family: "Tilt Neon", sans-serif;
+}
+
+.rightSide .total {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid grey;
+  padding-top: 40px;
+  font-family: "Tilt Neon", sans-serif;
+}
+
+.rightSide button {
+  height: 50px;
+  background-color: black;
+  color: white;
+  border: none;
+  font-family: "Tilt Neon", sans-serif;
+}
+
+
+.noCart {
+    min-height: 300px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+     font-family: "Tilt Neon", sans-serif;
+    
+}
+
+.noCart button {
+    background-color: black;
+    color: white;
+    padding: 10px 30px;
+    font-family: "Tilt Neon", sans-serif;
+    cursor: pointer;
+}

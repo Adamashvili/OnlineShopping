@@ -1,1 +1,73 @@
-<p>profile-page works!</p>
+<header></header>
+@if (userData) {
+<div class="userHead">
+  <img [src]="userData.avatar" alt="" />
+  <div class="infoHead">
+    <h1>
+      {{ userData.firstName }} {{ userData.lastName }} @if (userData.verified)
+      {<i class="fa-solid fa-circle-check"></i>}
+    </h1>
+    <h4>Lorem ipsum dolor sit amet consectetur.</h4>
+    <div class="sideInfo">
+      <p><i class="fa-solid fa-location-dot"></i> {{ userData.address }}</p>
+      <p><i class="fa-solid fa-phone-volume"></i> {{ userData.phone }}</p>
+      <p><i class="fa-solid fa-envelope"></i> {{ userData.email }}</p>
+    </div>
+  </div>
+</div>
+@if (cartList.length > 0) {
+<main>
+  <div class="leftSide">
+    <div class="cartHeading">
+        <h1>Shopping Cart</h1>
+        <h4>{{cartList.length}} items</h4>
+    </div>
+    <div class="list">
+
+   
+    
+        @for (item of cartList; track $index) {
+        <div class="listItem">
+          <img width="50" [src]="item.images[0]" alt="" />
+          <div class="title">
+            <h4>{{ item.category.name }}</h4>
+            <h4>{{ item.title }}</h4>
+          </div>
+          <div class="quantity">
+            <button>-</button>
+            <p>{{ item.quantity }}</p>
+            <button>+</button>
+          </div>
+          <p>{{(item.price.current * item.quantity) | currency }}</p>
+          <button (click)="deleteItem(item._id)" class="trash"><i class="fa-solid fa-trash"></i></button>
+        </div>
+        }
+     
+    </div>
+    <button (click)="removeALL()" class="removeAll">Remove All</button>
+  </div>
+  <div class="rightSide">
+    <h1>Summary</h1>
+     <div class="total">
+        <h2>ITEMS 3</h2>
+        <h2>{{total | currency  }}</h2>
+    </div>
+    <div class="shipping">
+        <h2>SHIPPING</h2>
+        <input type="text" value="Standart-Delivery - $10" readonly>
+    </div>
+    <div class="total">
+        <h2>TOTAL PRICE</h2>
+        <h2>{{ (total + 10) | currency  }}</h2>
+    </div>
+    <button (click)="checkOut()">CHECKOUT</button>
+  </div>
+</main>
+}
+@else {
+    <div class="noCart">
+        <h1>{{cartSMS ? 'Products purchased successfully' : 'No Products in Cart...'}}</h1>
+        <button routerLink="/shop">Go To Shopping</button>
+    </div>
+}
+}

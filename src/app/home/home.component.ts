@@ -19,8 +19,17 @@ export class HomeComponent implements OnInit {
   
   public shopCards: any;
 
+ 
+
   ngOnInit(): void {
     this.shopCards = shopCards
   }
+
+  satesto() {
+    console.log("blabla");
+    
+  }
+
+  
 
 }

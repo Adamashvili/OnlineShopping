@@ -60,7 +60,7 @@ export class ProductsAreaService {
 
   getCardsforHome() {
     return this.http.get<AllProductArea>(
-      'https://api.everrest.educata.dev/shop/products/all?page_size=10'
+      'https://api.everrest.educata.dev/shop/products/all?page_index=3&page_size=10'
     );
   }
 

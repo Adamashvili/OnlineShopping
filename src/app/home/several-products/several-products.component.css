@@ -43,6 +43,16 @@ section main {
     
 }
 
+.card h6 {
+    position: absolute;
+    transform: rotate(-39deg);
+    background-color: red;
+    padding: 5px 20px;
+    left: -22px;
+    top: 10px;
+    z-index: 10;
+}
+
 .card img {
     width: 100%;
     height: 200px;

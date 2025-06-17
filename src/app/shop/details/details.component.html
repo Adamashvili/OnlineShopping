@@ -68,7 +68,7 @@
       <h2>{{ prodQuant }}</h2>
       <button (click)="increase()">+</button>
     </div>
-    <button (click)="cartBTN()" class="cartBtn">
+    <button [disabled]="prodINFO.stock <= 0" (click)="cartBTN(prodINFO._id)" class="cartBtn">
       <i class="fa-solid fa-cart-shopping"></i> Add To cart
     </button>
     <div class="line"></div>

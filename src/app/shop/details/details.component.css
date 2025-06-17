@@ -209,3 +209,10 @@
   gap: 10px;
 }
 
+
+
+.cartBtn:disabled {
+  background-color: black;
+  box-shadow: 0 0 10px 2px black;
+  cursor:not-allowed;
+}

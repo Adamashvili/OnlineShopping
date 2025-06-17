@@ -1,7 +1,5 @@
 <nav appScrolling>
   <h1 routerLink="/"><i class="fa-solid fa-store"></i> Shopping Mall</h1>
-  
-
   <div class="account">
     @if (!isLoggedIn) {
     <button (click)="showRegister()">
@@ -11,7 +9,7 @@
       <i class="fa-solid fa-person-walking-dashed-line-arrow-right"></i> Sign in
     </button>
     } @else  {
-    <button><img [src]="userImg" alt="">{{userName}}</button>
+    <button routerLink="/profile" ><img [src]="userImg" alt="">{{userName}}</button>
     <button (click)="signOut()"><i class="fa-solid fa-right-to-bracket"></i> Sign Out</button>
     }
   </div>
@@ -22,7 +20,7 @@
   (closeEmit)="closeForm($event)"
   (changeEmit)="showRegister()"
   (loggedEmit)="loggedIn($event)"
-  (loggedInfo)="profileInfoNav($event)"
+ 
 ></app-sign-in>
 } @if (isRegisterShow) {
 <app-sign-up

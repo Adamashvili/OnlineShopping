@@ -7,6 +7,7 @@ import {
 } from '@angular/forms';
 import { ApiAreaService } from '../services/api-area.service';
 import { SsrCookieService } from 'ngx-cookie-service-ssr';
+import { ToolsService } from '../services/tools.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -15,7 +16,7 @@ import { SsrCookieService } from 'ngx-cookie-service-ssr';
   styleUrl: './sign-in.component.css',
 })
 export class SignInComponent {
-  constructor(private api: ApiAreaService, public _cookie: SsrCookieService) {}
+  constructor(private api: ApiAreaService, public _cookie: SsrCookieService, private tools: ToolsService) {}
   @Output() closeEmit: EventEmitter<boolean> = new EventEmitter();
   @Output() changeEmit: EventEmitter<boolean> = new EventEmitter();
   @Output() loggedEmit: EventEmitter<boolean> = new EventEmitter();
@@ -35,7 +36,7 @@ export class SignInComponent {
     this.api.signIn(this.signInForm.value).subscribe({
       next: (data: any) => {
         this.accessToken = data.access_token;
-        this._cookie.set('user', this.accessToken, 0.4);
+        this._cookie.set('user', this.accessToken, 1);
         this.errAlert = false;
         this.successLogin = true;
         this.api.profileInfo().subscribe((data: any) => {
@@ -43,11 +44,7 @@ export class SignInComponent {
             firstName: data.firstName,
             avatar: data.avatar,
           };
-
-          this._cookie.set('userInfo', JSON.stringify(userInfo));
-          sessionStorage.setItem('userName', userInfo.firstName);
-          sessionStorage.setItem('userAvatar', userInfo.avatar);
-          this._cookie.set("cartInfo", data.cartID)
+          this.tools.userNavbarInfo.next(userInfo)
         });
 
         if (this.successLogin) {
