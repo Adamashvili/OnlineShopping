@@ -35,8 +35,8 @@ export class SignInComponent {
   signIn() {
     this.api.signIn(this.signInForm.value).subscribe({
       next: (data: any) => {
-        this.accessToken = data.access_token;
-        this._cookie.set('user', this.accessToken, 1);
+        
+        this._cookie.set('user', data.access_token, 1);
         this.errAlert = false;
         this.successLogin = true;
         this.api.profileInfo().subscribe((data: any) => {
@@ -44,7 +44,8 @@ export class SignInComponent {
             firstName: data.firstName,
             avatar: data.avatar,
           };
-          this.tools.userNavbarInfo.next(userInfo)
+           this.tools.userNavbarInfo.next(userInfo)
+           this._cookie.set("userInfo", JSON.stringify(userInfo), 1)
         });
 
         if (this.successLogin) {

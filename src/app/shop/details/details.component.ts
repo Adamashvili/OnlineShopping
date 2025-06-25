@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ProductsAreaService } from '../../services/products-area.service';
 import { CommonModule } from '@angular/common';
@@ -24,7 +24,8 @@ export class DetailsComponent implements OnInit {
     public tools: ToolsService,
     private _cookie: SsrCookieService,
     private apiArea: ApiAreaService,
-    private cartServ: CartAreaService
+    private cartServ: CartAreaService,
+    private renderer: Renderer2
   ) {}
 
   ngOnInit(): void {
@@ -38,6 +39,7 @@ export class DetailsComponent implements OnInit {
   public allImages!: string[];
   public starNum!: number;
   public prodQuant: number = 1;
+  @ViewChild("addShow") addShow!: ElementRef
 
   getParam() {
     this.actR.params.subscribe((data: Params) => {
@@ -74,18 +76,25 @@ export class DetailsComponent implements OnInit {
     this.tools.isErrSMS.next(true);
   }
 
-  
-
   cartBTN(id: string) {
-    const prodInfoCart = {
-      id: id,
-      quantity:this.prodQuant
-    }
+    if (this._cookie.get("user")) {
+      const prodInfoCart = {
+        id: id,
+        quantity: this.prodQuant,
+      };
 
-    
-    this.apiArea.profileInfo().subscribe( (data:any) => {
-    data.cartID ? this.cartServ.addtoCart(prodInfoCart).subscribe() : this.cartServ.createCart(prodInfoCart).subscribe()
-      
-    } )
+      this.apiArea.profileInfo().subscribe((data: any) => {
+        data.cartID
+          ? this.cartServ.addtoCart(prodInfoCart).subscribe()
+          : this.cartServ.createCart(prodInfoCart).subscribe();
+          this.renderer.setStyle(this.addShow.nativeElement, "bottom", "0")
+          setTimeout(() => {
+            this.renderer.setStyle(this.addShow.nativeElement, "bottom", "-100px")
+          }, 2000);
+      });
+    }
+    else {
+      this.tools.isErrSMS.next(true)
+    }
   }
 }
