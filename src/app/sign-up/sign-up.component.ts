@@ -8,20 +8,19 @@ import {
 import { ApiAreaService } from '../services/api-area.service';
 
 @Component({
-    selector: 'app-sign-up',
-    imports: [ReactiveFormsModule],
-    templateUrl: './sign-up.component.html',
-    styleUrl: './sign-up.component.css'
+  selector: 'app-sign-up',
+  imports: [ReactiveFormsModule],
+  templateUrl: './sign-up.component.html',
+  styleUrl: './sign-up.component.css',
 })
 export class SignUpComponent {
   constructor(private service: ApiAreaService) {}
 
   @Output() closeEmit: EventEmitter<boolean> = new EventEmitter();
 
-
   errAlert: boolean = false;
   successRegister: boolean = false;
-  errorList: any[] =[];
+  errorList: any[] = [];
 
   protected signUpForm: FormGroup = new FormGroup({
     firstName: new FormControl('', Validators.required),
@@ -33,7 +32,10 @@ export class SignUpComponent {
       Validators.minLength(7),
     ]),
     address: new FormControl('', Validators.required),
-    phone: new FormControl('', [Validators.required, Validators.minLength(9)]),
+    phone: new FormControl('+995', [
+      Validators.required,
+      Validators.minLength(9),
+    ]),
     zipcode: new FormControl('', Validators.required),
     avatar: new FormControl('', Validators.required),
     gender: new FormControl('', Validators.required),
@@ -49,13 +51,12 @@ export class SignUpComponent {
         if (this.successRegister) {
           setTimeout(() => {
             this.closeEmit.emit(false);
-          
           }, 1000);
         }
       },
       error: (err) => {
         console.log(err.error.errorKeys);
-        this.errorList = err.error.errorKeys
+        this.errorList = err.error.errorKeys;
       },
     });
   }

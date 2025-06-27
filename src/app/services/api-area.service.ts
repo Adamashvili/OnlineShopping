@@ -21,5 +21,9 @@ export class ApiAreaService {
     return this.http.get("https://api.everrest.educata.dev/auth")
   }
 
+  updateProfile(body: any) {
+    return this.http.patch("https://api.everrest.educata.dev/auth/update", body)
+  }
+
  
 }
