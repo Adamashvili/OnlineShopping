@@ -1,0 +1,41 @@
+<div class="allArea">
+  <form [formGroup]="userForm" (ngSubmit)="updateInfo()">
+    <div class="bestS">
+      <h1>Edit Your Info</h1>
+    </div>
+    <i (click)="closeForm()" class="fa-solid fa-x"></i>
+    <div class="area">
+      <label for=""><i class="fa-solid fa-user-tie"></i> First Name</label>
+      <input type="text" formControlName="firstName" />
+    </div>
+    <div class="area">
+      <label for=""><i class="fa-solid fa-id-badge"></i>Last Name</label>
+      <input type="text" formControlName="lastName" />
+    </div>
+    <div class="area">
+      <label for=""> <i class="fa-solid fa-image-portrait"></i>Age</label>
+      <input type="text" formControlName="age" />
+    </div>
+    <div class="area">
+      <label for=""><i class="fa-solid fa-map"></i>Address</label>
+      <input type="text" formControlName="address" />
+    </div>
+    <div class="area">
+      <label for=""> <i class="fa-solid fa-phone"></i>Phone</label>
+      <input type="text" formControlName="phone" />
+    </div>
+    <div class="area">
+      <label for=""> <i class="fa-solid fa-file-zipper"></i>Zip Code</label>
+      <input type="text" formControlName="zipcode" />
+    </div>
+    <div class="area">
+      <label for=""> <i class="fa-solid fa-image"></i>Image</label>
+      <input type="text" formControlName="avatar" />
+    </div>
+    <div class="area">
+      <label for=""> <i class="fa-solid fa-venus-mars"></i>Gender</label>
+      <input type="text" formControlName="gender" />
+    </div>
+    <button [disabled]="userForm.invalid">SAVE</button>
+  </form>
+</div>

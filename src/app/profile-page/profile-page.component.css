@@ -10,7 +10,9 @@ header {
   padding: 30px 100px;
   gap: 100px;
   box-shadow: 0 2px 6px 1px rgb(230, 228, 228);
-  align-items: center;
+  align-items: start;
+  position: relative;
+  justify-content: center;
 }
 
 .userHead img {
@@ -20,6 +22,73 @@ header {
   object-fit: cover;
   margin-top: -100px;
   border: 7px solid white;
+}
+
+.fa-gear {
+  position: absolute;
+  left: 105px;
+  background-color: white;
+  border-top: 2px solid rgb(223, 222, 222);
+  top: -20px;
+  cursor: pointer;
+  transition: 1s ease-in-out;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+
+.fa-gear:hover {
+  background-color: #263C51;
+  color: white;
+  transform: rotate(500deg);
+
+}
+.areaSetting {
+  
+  position: relative;
+}
+
+.settings {
+ 
+  box-shadow: 0 0 10px rgb(223, 222, 222);
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  gap: 15px;
+  width: 250px;
+  height: 100%;
+  border-radius: 10px;
+  transition: 0.3s;
+  transform: rotateX(70deg) translateY(-200px) scale(0);
+}
+
+.settingShowHide {
+  transform: none;
+  
+}
+
+.settings li {
+  background-color: #366577;
+  color: white;
+  padding: 10px 15px;
+  text-align: center;
+  border-radius: 7px;
+  font-family: "Tilt Neon", sans-serif;
+  cursor: pointer;
+  box-shadow: inset 0 0 30px  black;
+  transition: 0.5s;
+}
+
+.settings li:last-child {
+  background-color: darkred;
+}
+
+.settings li:hover {
+  box-shadow: none;
 }
 
 .infoHead {
@@ -39,7 +108,7 @@ header {
   position: absolute;
   font-size: 15px;
   right: -20px;
-  color: black;
+  color: #263C51;
 }
 
 .sideInfo {
@@ -61,7 +130,7 @@ main {
   min-height: 650px;
   margin: 20px auto;
   display: flex;
-  box-shadow: 0 0 10px 2px grey;
+  box-shadow: 0 0 10px 2px rgb(196, 196, 196);
   border-radius: 10px;
   font-family: "Tilt Neon", sans-serif;
 }

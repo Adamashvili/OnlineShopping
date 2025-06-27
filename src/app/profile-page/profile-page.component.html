@@ -1,3 +1,8 @@
+@if (isProfileInfoShown) {
+
+  <app-editprofile (closeEmitter)="closeProfileInfo($event)"></app-editprofile>
+}
+
 <header></header>
 @if (userData) {
 <div class="userHead">
@@ -13,6 +18,14 @@
       <p><i class="fa-solid fa-phone-volume"></i> {{ userData.phone }}</p>
       <p><i class="fa-solid fa-envelope"></i> {{ userData.email }}</p>
     </div>
+  </div>
+  <div class="areaSetting">
+  <i (click)="toggleSettings()" class="fa-solid fa-gear"></i>
+  <ul #settings class="settings">
+    <li (click)="showProfileInfo()">Update your Info</li>
+    <li>Change password</li>
+    <li>Delete Account</li>
+  </ul>
   </div>
 </div>
 @if (cartList.length > 0) {
