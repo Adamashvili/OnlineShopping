@@ -3,8 +3,8 @@ import { SignInComponent } from '../sign-in/sign-in.component';
 import { SignUpComponent } from '../sign-up/sign-up.component';
 import { ScrollingDirective } from '../../directives/scrolling.directive';
 import { RouterModule } from '@angular/router';
-import { SsrCookieService } from 'ngx-cookie-service-ssr';
 import { ToolsService } from '../services/tools.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-navbar',
@@ -19,7 +19,7 @@ import { ToolsService } from '../services/tools.service';
   styleUrl: './navbar.component.css',
 })
 export class NavbarComponent implements OnInit {
-  constructor(private _cookie: SsrCookieService, private tools: ToolsService) {}
+  constructor(private _cookie: CookieService, private tools: ToolsService) {}
 
   ngOnInit(): void {
     this.isLoggedIn = this.userName ? true : false;

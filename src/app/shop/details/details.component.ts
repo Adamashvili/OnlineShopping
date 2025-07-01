@@ -6,9 +6,9 @@ import { RelatedProdsComponent } from './related-prods/related-prods.component';
 import { Product } from '../../../interfaces/product';
 import { SignErrComponent } from '../../sign-err/sign-err.component';
 import { ToolsService } from '../../services/tools.service';
-import { SsrCookieService } from 'ngx-cookie-service-ssr';
 import { ApiAreaService } from '../../services/api-area.service';
 import { CartAreaService } from '../../services/cart-area.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-details',
@@ -22,7 +22,7 @@ export class DetailsComponent implements OnInit {
     private service: ProductsAreaService,
     public router: Router,
     public tools: ToolsService,
-    private _cookie: SsrCookieService,
+    private _cookie: CookieService,
     private apiArea: ApiAreaService,
     private cartServ: CartAreaService,
     private renderer: Renderer2

@@ -6,8 +6,8 @@ import {
   Validators,
 } from '@angular/forms';
 import { ApiAreaService } from '../services/api-area.service';
-import { SsrCookieService } from 'ngx-cookie-service-ssr';
 import { ToolsService } from '../services/tools.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-sign-in',
@@ -16,7 +16,7 @@ import { ToolsService } from '../services/tools.service';
   styleUrl: './sign-in.component.css',
 })
 export class SignInComponent {
-  constructor(private api: ApiAreaService, public _cookie: SsrCookieService, private tools: ToolsService) {}
+  constructor(private api: ApiAreaService, public _cookie: CookieService, private tools: ToolsService) {}
   @Output() closeEmit: EventEmitter<boolean> = new EventEmitter();
   @Output() changeEmit: EventEmitter<boolean> = new EventEmitter();
   @Output() loggedEmit: EventEmitter<boolean> = new EventEmitter();
