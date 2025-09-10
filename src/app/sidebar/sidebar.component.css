@@ -159,9 +159,9 @@ button:hover {
   }
 
   .area .search {
-    width: 100vw;
+    width: 90vw;
     flex-shrink: 0;
-    margin: auto;
+    /* margin: auto; */
   }
 
   .area .search input {
@@ -173,7 +173,7 @@ button:hover {
     display: none !important;
   }
   .area .brands {
-    width: 100vw;
+    width: 95vw;
     flex-shrink: 0;
   }
 
@@ -192,5 +192,9 @@ button:hover {
     flex-shrink: 0;
     width: 70vw;
     margin: 10px auto;
+  }
+
+  .area button {
+    margin: 20px !important; 
   }
 }
