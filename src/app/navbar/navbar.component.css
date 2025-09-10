@@ -49,3 +49,9 @@ nav .account button {
     gap: 14px;
 }
 
+
+@media screen and (max-width:800px) {
+    nav h1 {
+        font-size: 25px;
+    }
+}

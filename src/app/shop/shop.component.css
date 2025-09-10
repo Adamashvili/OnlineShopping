@@ -270,3 +270,21 @@ section main {
   background-color: #4d3c6f !important;
   box-shadow:  none !important;
 }
+
+
+@media screen and (max-width:786px) {
+  article {
+    flex-direction: column;
+  }
+
+  article .sidebar  {
+    position: static;
+    width: 100vw;
+    display: flex;
+    height: auto;
+  }
+
+  .categories {
+    justify-content: center;
+  }
+}

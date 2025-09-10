@@ -55,3 +55,9 @@ main {
     background-color: red;
     box-shadow: 0 0 5px 0px red;
 }
+
+@media screen and (max-width:900px) {
+    main {
+        transform: scale(0.8);
+    }
+}

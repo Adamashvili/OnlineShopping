@@ -184,6 +184,7 @@ form button:hover {
         height: 90%;
         padding: 10px;
         overflow: scroll;
+        transform: scale(0.8) !important;
     }
 
     form h1 {
