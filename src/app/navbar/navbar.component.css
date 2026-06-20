@@ -19,11 +19,12 @@ nav {
 }
 
 nav h1 {
-    font-family: "Ga Maamli", sans-serif;
+     font-family: "Grenze", serif;
     font-weight: 500;
     letter-spacing: 0.5px;
     font-size: 30px;
     cursor: pointer;
+   
 }
 
 
@@ -47,6 +48,8 @@ nav .account button {
     display: flex;
     align-items: center;
     gap: 14px;
+    font-family: "Slabo 27px", serif;
+    font-weight: bold;
 }
 
 

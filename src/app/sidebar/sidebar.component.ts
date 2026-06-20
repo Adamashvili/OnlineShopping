@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { ProductsAreaService } from '../services/products-area.service';
 import { AllProductArea } from '../../interfaces/all-product-area';
 import { FormsModule } from '@angular/forms';
@@ -18,16 +18,23 @@ export class SidebarComponent implements OnInit {
   @Output() sendFilterData: EventEmitter<Object> = new EventEmitter();
   @Output() sendSearchInfo: EventEmitter<string> = new EventEmitter();
 
+  @ViewChild("brandsUl") protected brandsUl!: ElementRef
+  @ViewChild("categoriesUl") protected categoriesUl!: ElementRef
+  @ViewChild("sortSelect") protected sortSelect!: ElementRef
+
+  protected categories: any;
   public searchText: string = '';
   public minPrice: string = '';
   public maxPrice: string = '';
   public rating!: number;
   public sort: string = '';
   public type: string = '';
-  public activeBrand: string = 'All';
+  public activeBrand: string = '';
+  
   protected brands: string[] = [];
   ngOnInit(): void {
     this.getBrandsList();
+    this.getCategoriesList()
   }
 
   searchData() {
@@ -42,16 +49,23 @@ export class SidebarComponent implements OnInit {
       rating: this.rating,
       type: this.type,
       sort: this.sort,
+      brand: this.activeBrand
     });
   }
 
   showAll() {
-    this.activeBrand = 'All';
+    this.activeBrand = '';
     this.productApi
       .getCardsOnShopPage(1, 15)
       .subscribe((data: AllProductArea) => {
         this.sendAllProducts.emit(data);
       });
+  }
+
+  getCategoriesList() {
+    this.productApi.getCategories().subscribe((list: any) => {
+      this.categories = list;
+    });
   }
 
   getBrandsList() {

@@ -18,9 +18,9 @@ export class ShopComponent implements OnInit {
 
   ngOnInit(): void {
     this.showProducts(this.currentPage, this.pageSize);
-    this.getCategoriesList();
+   
   }
-  protected categories: any;
+  
   public currentCategory: any;
   public productList: Product[] = [];
   public pageList: number[] = [];
@@ -63,17 +63,22 @@ export class ShopComponent implements OnInit {
   }
 
   filterProducts(info: any) {
+    console.log(info);
+
     this.prodService
       .filterData(
-        (info.search = ''),
+        info.search,
         info.rating,
-        (info.min = '1'),
-        (info.max = '999'),
+        info.min,
+        info.max,
         info.type,
         info.sort,
-        this.pageSize
+        this.pageSize,
+        info.brand,
       )
       .subscribe((data: FilteredProducts) => {
+        console.log(data);
+
         this.productList = data.products;
         this.pagination(data);
       });
@@ -113,11 +118,7 @@ export class ShopComponent implements OnInit {
     }
   }
 
-  getCategoriesList() {
-    this.prodService.getCategories().subscribe((list: any) => {
-      this.categories = list;
-    });
-  }
+  
 
   showByCategory(category: string, pageNum: any) {
     this.isCategoryShown = true;
@@ -126,7 +127,6 @@ export class ShopComponent implements OnInit {
     this.prodService
       .getListByCategory(category, this.currentPage, this.pageSize)
       .subscribe((data: any) => {
-  
         this.productList = data.products;
         this.pagination(data);
       });

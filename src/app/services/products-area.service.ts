@@ -12,31 +12,31 @@ export class ProductsAreaService {
 
   getCategories() {
     return this.http.get(
-      'https://api.everrest.educata.dev/shop/products/categories'
+      'https://api.everrest.educata.dev/shop/products/categories',
     );
   }
 
   getListByCategory(id: any, page: any, size: any) {
     return this.http.get<AllProductArea>(
-      `https://api.everrest.educata.dev/shop/products/category/${id}?page_index=${page}&page_size=${size}`
+      `https://api.everrest.educata.dev/shop/products/category/${id}?page_index=${page}&page_size=${size}`,
     );
   }
 
   getBrands() {
     return this.http.get<string[]>(
-      'https://api.everrest.educata.dev/shop/products/brands'
+      'https://api.everrest.educata.dev/shop/products/brands',
     );
   }
 
   getExactBrandData(name: string) {
     return this.http.get<AllProductArea>(
-      `https://api.everrest.educata.dev/shop/products/brand/${name}?page_size=10`
+      `https://api.everrest.educata.dev/shop/products/brand/${name}?page_size=10`,
     );
   }
 
   getSearchedData(searchInput: string, size: number) {
     return this.http.get<FilteredProducts>(
-      `https://api.everrest.educata.dev/shop/products/search?page_size=${size}&keywords=${searchInput}`
+      `https://api.everrest.educata.dev/shop/products/search?page_size=${size}&keywords=${searchInput}`,
     );
   }
 
@@ -47,32 +47,29 @@ export class ProductsAreaService {
     max: string = '99999',
     type: string,
     sort: string,
-    size: number
+    size: number,
+    brand: string
   ) {
-    let isRated = rating != '' ? '&rating=' : '';
-    let isChosenType = type != '' ? '&sort_by=' : '';
-    let isSorted = sort != '' ? '&sort_direction=' : '';
-
     return this.http.get<FilteredProducts>(
-      `https://api.everrest.educata.dev/shop/products/search?page_size=${size}&keywords=${searchText}${isRated}${rating}&price_min=${min}&price_max=${max}${isChosenType}${type}${isSorted}${sort}`
+      `https://api.everrest.educata.dev/shop/products/search?page_index=1&page_size=${size}&keywords=${searchText}&category_id=1&brand=${brand}${rating ? '&rating=': ''}${rating}${min ? '&price_min=': ''}${min}${max ? '&price_max=': ''}${max}${type ? '&sort_by=' : ''}${type}${sort ? '&sort_direction=': ''}${sort}`,
     );
   }
 
   getCardsforHome() {
     return this.http.get<AllProductArea>(
-      'https://api.everrest.educata.dev/shop/products/all?page_index=3&page_size=10'
+      'https://api.everrest.educata.dev/shop/products/all?page_index=3&page_size=10',
     );
   }
 
   getCardsOnShopPage(page: any, size: any) {
     return this.http.get<AllProductArea>(
-      `https://api.everrest.educata.dev/shop/products/all?page_index=${page}&page_size=${size}`
+      `https://api.everrest.educata.dev/shop/products/all?page_index=${page}&page_size=${size}`,
     );
   }
 
   getProductDetailInfo(id: string) {
     return this.http.get<Product>(
-      `https://api.everrest.educata.dev/shop/products/id/${id}`
+      `https://api.everrest.educata.dev/shop/products/id/${id}`,
     );
   }
 }

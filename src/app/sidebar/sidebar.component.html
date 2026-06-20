@@ -1,10 +1,17 @@
-<div class="area">
-  
+<!-- <div class="area">
+    <div  class="categories">
+        @for (item of categories; track $index) {
+        <button>
+          <img [src]="item.image" alt="" />
+          <h4 >{{ item.name }}</h4>
+        </button>
+        }
+      </div>
 
   <div class="brands">
     <h1>Brands</h1>
     <ul>
-      <li [class.activedBrand]="activeBrand == 'All'" (click)="showAll()"><i class="fa-solid fa-tag"></i>All</li>
+      <li [class.activedBrand]="activeBrand == ''" (click)="showAll()"><i class="fa-solid fa-tag"></i>All</li>
       @for (item of brands; track $index) {
       <li [class.activedBrand]="item == activeBrand" (click)="getBrandData(item)">
         <i class="fa-solid fa-tag"></i>{{ item }}
@@ -47,4 +54,89 @@
     </select>
   </div>
   <button (click)="filterData()">Filter</button>
-</div>
+</div> -->
+<aside>
+  <article class="categories">
+    <h3 (click)="categoriesUl.classList.toggle('toggleBrands')">
+      Categories
+      <i
+        class="fa-solid fa-angle-{{
+          categoriesUl.classList.contains('toggleBrands') ? 'up' : 'down'
+        }}"
+      ></i>
+    </h3>
+    <ul #categoriesUl>
+      @for (item of categories; track $index) {
+        <li>{{ item.name }}</li>
+        }
+    </ul>
+  </article>
+
+  <input
+    (keyup.enter)="searchData()"
+    type="search"
+    placeholder="Search here..."
+    [(ngModel)]="searchText"
+  />
+
+  <article class="brands">
+    <h3 (click)="brandsUl.classList.toggle('toggleBrands')">
+      Brands
+      <i
+        class="fa-solid fa-angle-{{
+          brandsUl.classList.contains('toggleBrands') ? 'down' : 'up'
+        }}"
+      ></i>
+    </h3>
+    <ul #brandsUl>
+      <li [class.activedBrand]="activeBrand == ''" (click)="showAll()">All</li>
+      @for (item of brands; track $index) {
+        <li
+          [class.activedBrand]="item == activeBrand"
+          (click)="getBrandData(item)"
+        >
+          {{ item }}
+        </li>
+      }
+    </ul>
+  </article>
+
+  <article class="price">
+    <h3>Price</h3>
+    <div class="prices">
+      <div class="interval">
+        <input id="from" type="number" />
+        <label for="from">From</label>
+      </div>
+      <div class="interval">
+        <input id="to" type="number" />
+        <label for="to">To</label>
+      </div>
+    </div>
+  </article>
+  <article class="sort">
+    <h3 (click)="sortSelect.classList.toggle('sortToggle')">
+      Sort
+      <i
+        class="fa-solid fa-angle-{{
+          sortSelect.classList.contains('sortToggle') ? 'up' : 'down'
+        }}"
+      ></i>
+    </h3>
+    <div #sortSelect class="sortSelect">
+      <select [(ngModel)]="type">
+        <option value="">Type</option>
+        <option value="rating">Rating</option>
+        <option value="price">Price</option>
+        <option value="issue_date">Issue Date</option>
+        <option value="title">Title</option>
+      </select>
+      <select [(ngModel)]="sort">
+        <option value="">Direction</option>
+        <option value="asc">Ascendes</option>
+        <option value="desc">Descendes</option>
+      </select>
+    </div>
+  </article>
+   <button (click)="filterData()">Search Products</button>
+</aside>

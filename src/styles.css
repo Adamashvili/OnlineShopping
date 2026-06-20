@@ -1,38 +1,45 @@
 /* You can add global styles to this file, and also import other style files */
-@import url('https://fonts.googleapis.com/css2?family=Bokor&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Ga+Maamli&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Exo:ital,wght@0,100..900;1,100..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Calistoga&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Bilbo+Swash+Caps&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Signika:wght@300..700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Metal+Mania&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Metal+Mania&family=Tilt+Neon&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,1..1000&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Slabo+27px&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Gentium+Plus:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Grenze:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* font-family: "Google Sans Flex", sans-serif; */
+/* font-family: "Slabo 27px", serif; */
+/* font-family: "Gentium Plus", serif; */
+/*  font-family: "Grenze", serif; */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  
+}
+:root {
+  interpolate-size: allow-keywords;
+}
+.container {
+  max-width: 1440px;
+  margin-inline: auto;
 }
 
-.container {
-    max-width: 1440px;
-    margin-inline:  auto;
+li {
+  list-style: none;
 }
 
 @keyframes smoothSlide {
-    0%{
-        transform: translateY(-2000px);
-    }
+  0% {
+    transform: translateY(-2000px);
+  }
 
-    55% {
-        transform: translateY(50px);
-    }
+  55% {
+    transform: translateY(50px);
+  }
 
-    85% {
-        transform: translateY(-10px);
-    }
+  85% {
+    transform: translateY(-10px);
+  }
 
-    100% {
-        transform: translateY(0px);
-    }
+  100% {
+    transform: translateY(0px);
+  }
 }
