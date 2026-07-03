@@ -6,7 +6,7 @@
         @for (item of relatedProds; track $index) {
         <div class="card">
           <img
-            [src]="!item.images[0] ? altImage : item.images[0]"
+            [src]="item.thumbnail" (error)="item.thumbnail = altImage"
             alt="product"
           />
           <h4>{{ item.title }}</h4>

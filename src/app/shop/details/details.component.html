@@ -1,13 +1,14 @@
 @if (prodINFO) {
 <section class="container detailArea">
   <div class="left">
-    <img class="mainImg" [src]="mainImage" alt="" />
+    <img class="mainImg" [src]="mainImage" (error)="mainImage = altImage" alt="" />
     <div class="otherIMGS">
       @for (item of allImages; track $index) {
       <img
         [class.activeImg]="item === mainImage"
         (click)="zoomImg(item)"
         [src]="item"
+        (error)="$any($event.target).src = altImage"
         alt=""
       />
       }
@@ -38,9 +39,9 @@
     }
 
     <ul>
-      <li>Category: {{ prodINFO.category.name }}</li>
-      <li>Brand: {{ prodINFO.brand }}</li>
-      <li>Issue Date: {{ prodINFO.issueDate | date }}</li>
+      <li> <span>Category:</span> {{ prodINFO.category.name }}</li>
+      <li> <span>Brand:</span> {{ prodINFO.brand }}</li>
+      <li> <span>Issue Date:</span> {{ prodINFO.issueDate | date }}</li>
     </ul>
     <div class="desc">
       <h3>Description</h3>

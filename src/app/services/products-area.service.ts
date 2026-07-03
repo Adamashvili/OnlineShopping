@@ -34,9 +34,9 @@ export class ProductsAreaService {
     );
   }
 
-  getSearchedData(searchInput: string, size: number) {
+  getSearchedData(searchInput: string) {
     return this.http.get<FilteredProducts>(
-      `https://api.everrest.educata.dev/shop/products/search?page_size=${size}&keywords=${searchInput}`,
+      `https://api.everrest.educata.dev/shop/products/search?page_size=38&keywords=${searchInput}`,
     );
   }
 
@@ -61,9 +61,9 @@ export class ProductsAreaService {
     );
   }
 
-  getCardsOnShopPage(page: any, size: any) {
+  getCardsOnShopPage(page: any) {
     return this.http.get<AllProductArea>(
-      `https://api.everrest.educata.dev/shop/products/all?page_index=${page}&page_size=${size}`,
+      `https://api.everrest.educata.dev/shop/products/all?page_index=${page}&page_size=15`,
     );
   }
 

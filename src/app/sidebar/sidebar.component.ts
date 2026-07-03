@@ -56,7 +56,7 @@ export class SidebarComponent implements OnInit {
   showAll() {
     this.activeBrand = '';
     this.productApi
-      .getCardsOnShopPage(1, 15)
+      .getCardsOnShopPage(1)
       .subscribe((data: AllProductArea) => {
         this.sendAllProducts.emit(data);
       });

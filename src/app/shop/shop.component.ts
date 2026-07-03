@@ -17,13 +17,12 @@ export class ShopComponent implements OnInit {
   constructor(private prodService: ProductsAreaService) {}
 
   ngOnInit(): void {
-    this.showProducts(this.currentPage, this.pageSize);
-   
+    this.showProducts(this.currentPage);
   }
-  
+
   public currentCategory: any;
   public productList: Product[] = [];
-  public pageList: number[] = [];
+  public maxPage: number = 1;
   public currentPage: number = 1;
   public pageSize: any = 15;
   public totalSize!: any;
@@ -32,20 +31,16 @@ export class ShopComponent implements OnInit {
     'https://media.istockphoto.com/id/1396814518/vector/image-coming-soon-no-photo-no-thumbnail-image-available-vector-illustration.jpg?s=612x612&w=0&k=20&c=hnh2OZgQGhf0b46-J2z7aHbIWwq8HNlSDaNp2wn_iko=';
 
   pagination(data: FilteredProducts | AllProductArea) {
-    this.pageList = [];
     this.productList = data.products;
     let pages = Math.ceil(data.total / this.pageSize);
-
-    for (let i = 1; i <= pages; i++) {
-      this.pageList.push(i);
-    }
+    this.maxPage = pages;
   }
 
-  showProducts(page: number | string = 1, size: number = this.totalSize) {
+  showProducts(page: number | string = 1) {
     this.isCategoryShown = false;
     this.currentPage = +page;
     this.prodService
-      .getCardsOnShopPage(page, size)
+      .getCardsOnShopPage(page)
       .subscribe((data: AllProductArea) => {
         this.productList = data.products;
         this.totalSize = data.total;
@@ -55,7 +50,7 @@ export class ShopComponent implements OnInit {
 
   search(search: string) {
     this.prodService
-      .getSearchedData(search, this.pageSize)
+      .getSearchedData(search)
       .subscribe((data: FilteredProducts) => {
         this.productList = data.products;
         this.pagination(data);
@@ -86,39 +81,7 @@ export class ShopComponent implements OnInit {
 
   switchBrands(dataOfBrand: AllProductArea) {
     this.productList = dataOfBrand.products;
-    this.pageList = [1];
   }
-
-  changePageSize() {
-    this.currentPage = 1;
-    let pageArea = this.pageSize == '' ? this.totalSize : this.pageSize;
-
-    if (!this.isCategoryShown) {
-      this.showProducts(this.currentPage, pageArea);
-    } else {
-      this.showByCategory(this.currentCategory, this.currentPage);
-    }
-  }
-
-  prevPage() {
-    this.currentPage--;
-    if (!this.isCategoryShown) {
-      this.showProducts(this.currentPage, this.pageSize);
-    } else {
-      this.showByCategory(this.currentCategory, this.currentPage);
-    }
-  }
-
-  nextPage() {
-    this.currentPage++;
-    if (!this.isCategoryShown) {
-      this.showProducts(this.currentPage, this.pageSize);
-    } else {
-      this.showByCategory(this.currentCategory, this.currentPage);
-    }
-  }
-
-  
 
   showByCategory(category: string, pageNum: any) {
     this.isCategoryShown = true;

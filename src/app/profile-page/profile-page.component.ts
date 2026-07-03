@@ -66,7 +66,7 @@ export class ProfilePageComponent implements OnInit {
     this.cartList = [];
     this.cartServ.getCart().subscribe((data: any) => {
       data.products.forEach((cartItems: any) => {
-        this.prodServ.getCardsOnShopPage(1, 50).subscribe((data: any) => {
+        this.prodServ.getCardsOnShopPage(1).subscribe((data: any) => {
           data.products.forEach((item: any) => {
             if (item._id == cartItems.productId) {
               item.quantity = cartItems.quantity;

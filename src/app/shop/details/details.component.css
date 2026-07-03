@@ -1,5 +1,5 @@
 *:not(i) {
-  font-family: "Signika", serif;
+  font-family: "Murecho", sans-serif;
 }
 
 .detailArea {
@@ -10,7 +10,7 @@
 
 .detailArea .left {
   width: 40%;
-  height: 600px;
+  min-height: 600px;
 
   display: flex;
   flex-direction: column;
@@ -29,6 +29,7 @@
 .left .otherIMGS {
   display: flex;
   gap: 10px;
+  flex-wrap: wrap;
 }
 
 .otherIMGS img {
@@ -54,7 +55,7 @@
 }
 
 .middle h2 {
-  font-size: 35px;
+  font-size: 30px;
   font-weight: 600;
   color: #545454;
 }
@@ -62,6 +63,7 @@
 .middle .stars {
   display: flex;
   gap: 5px;
+  align-items: center;
 }
 
 .middle .fa-star {
@@ -74,6 +76,10 @@
   gap: 10px;
   padding-left: 15px;
   color: #717171;
+}
+.middle ul li {
+  display: flex;
+  justify-content: space-between;
 }
 
 .middle h5,

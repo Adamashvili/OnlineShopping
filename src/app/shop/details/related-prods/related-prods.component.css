@@ -18,7 +18,7 @@
   .relatedP h1 {
     background-color: white;
     padding-inline: 20px;
-    font-family: "Exo", serif;
+    font-family: "Murecho", sans-serif;
     font-weight: 500;
     letter-spacing: 1px;
     color: #244353;
@@ -42,7 +42,7 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
-    font-family: "Exo", serif;
+    font-family: "Murecho", sans-serif;
     position: relative;
     overflow: hidden;
     transition: 0.3s;
