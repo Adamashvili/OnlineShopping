@@ -1,104 +1,172 @@
 
 
-.shopInfos {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 15px;
-    margin: 70px 0;
-}
-
-.shopInfos .card {
-    width: 300px;
-    height: 200px;
-    background-color: #04212F;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    gap: 15px;
-    padding: 40px;
-     font-family: "Grenze", serif;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-.shopInfos .card:hover {
-    transform: scale(1.03);
-    box-shadow: 0 0 15px 1px #04212F;
-}
-
-.shopInfos .card i {
-    font-size: 40px;
-}
-
-
-
-.arrivals {
-    
-    height: 400px;
-    background-image: url("/arrivals.jpg");
-    background-size: cover;
-    background-attachment: fixed;
-    background-position: right;
-   
-   
-}
-
 main {
-    height: 100%;
-    display: flex;
-    justify-content: start;
-    align-items: center;
-    color: white;
-  
+    max-width: 1400px;
+    margin: auto;
 }
 
-.infos {
-    width: 500px;
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-    align-items: start;
-}
-
-.infos h1 {
-    font-size: 50px;
-     font-family: "Grenze", serif;
-    letter-spacing: 1px;
-    color: red;
-}
-
-
-.infos p {
-     font-family: "Grenze", serif;
+main > h1 {
+    font-family: "Slabo 27px", serif;
     font-size: 20px;
 }
 
-.bestS {
-    display: flex;
+.categories {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  max-width: 1400px;
+  margin: 30px auto;
+  gap: 30px;
+}
+
+.categoryCard {
+  box-shadow: 0 0 5px rgb(210, 207, 207);
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  grid-template-rows: 160px;
+  align-items: center;
+  overflow: hidden;
+  font-size: 40px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.6s;
+}
+
+.categoryCard:hover {
+  transform: scale(1.02);
+}
+
+.categoryCard h2 {
+  font-family: "Grenze", serif;
+  font-weight: 500;
+  background: #3c2957;
+  background: linear-gradient(
+    90deg,
+    rgba(60, 41, 87, 1) 0%,
+    rgba(142, 43, 138, 1) 100%
+  );
+  height: 100%;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+.categoryCard:nth-child(2) h2 {
+  background: #0a1f1f;
+  background: linear-gradient(
+    90deg,
+    rgba(10, 31, 31, 1) 0%,
+    rgba(10, 103, 79, 1) 100%
+  );
+}
+
+.categoryCard .photo {
+  height: 100%;
+  position: relative;
+  padding: 20px;
+}
+
+.categoryCard .photo::after {
+  content: "";
+  width: 100%;
+  height: 50%;
+  position: absolute;
+  background-color: white;
+  left: 0;
+  bottom: 0;
+  transform: skewX(-20deg) scale(1.09, 1);
+}
+
+.categoryCard .photo img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+  z-index: 1;
+  position: relative;
+}
+
+
+.brands {
+    max-width: 1400px;
+    margin: 50px auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 217px);
+    grid-auto-rows: 110px;
+    gap: 35px 15px;
     justify-content: center;
-    position: relative;
-    margin: 40px 0;
+}
+
+.brandCard {
+    background-color: #F2EEFB;
+    border-radius: 13px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.brandCard:hover {
+    transform: scale(1.03);
+}
+
+.brandCard h5 {
+    font-size: 30px;
+    font-family: "Slabo 27px", serif;
+    font-weight: 600;
+    color: #433073;
+}
+
+.brandCard img {
+    width: 60px;
+    align-self: flex-end;
+}
+
+.selling {
+    display: flex;
+    justify-content: space-between !important;
+    align-items: center;
+    
+}
+
+
+.bestS {
+  display: flex;
+  justify-content: start;
+  position: relative;
+  margin: 60px 0;
 }
 
 .bestS::after {
-content: "";
-position: absolute;
-width: 100%;
-height: 1px;
-background-color: rgb(197, 197, 197);
-top: 50%;
-z-index: -1;
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  background-color: rgb(197, 197, 197);
+  top: 50%;
+  z-index: -1;
 }
 
 .bestS h1 {
-    background-color: white;
-    padding-inline: 20px;
-     font-family: "Grenze", serif;
-    font-weight: 500;
-    letter-spacing: 1px;
-    color: #244353;
+  background-color: white;
+  padding-inline: 20px;
+  font-family: "Slabo 27px", serif;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: #433073;
+}
+
+
+.bestS h1:last-child {
+    cursor: pointer;
+    transition: 0.2s;
+    font-size: 16px;
+  letter-spacing: 0.5px;
+}
+
+.bestS h1:last-child:hover {
+    color: #7419f3;
+    text-shadow: 0 0 1px #0a1f1f7b;
 }

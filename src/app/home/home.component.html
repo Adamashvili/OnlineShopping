@@ -1,39 +1,41 @@
-
 <app-banner></app-banner>
-
-
-<section class="shopInfos">
-  @for (item of shopCards; track $index) {
-  <div class="card">
-    <i class="fa-solid {{ item.icon }}"></i>
-    <h4>{{ item.header }}</h4>
-    <p>
-      Lorem ipsum dolor sit amet consectetur
-    </p>
+<main>
+<section class="categories">
+  <div class="categoryCard">
+    <h2>Laptops</h2>
+    <div class="photo">
+      <img src="https://i.imgur.com/LNqbBdo.jpg" alt="" />
+    </div>
   </div>
-  }
+  <div class="categoryCard">
+    <h2>Smartphones</h2>
+    <div class="photo">
+      <img src="https://i.imgur.com/jqoLcKx.jpg" alt="" />
+    </div>
+  </div>
 </section>
 
-<section class="arrivals">
-    <main class="container">
-        <div class="infos">
-        <h1>New Arrivals</h1>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea, minima?
-              Ducimus quis dicta velit incidunt voluptatum. Dolores deleniti facere
-              fugiat voluptas aut ab quidem reiciendis officiis, vitae explicabo, at
-              consequuntur necessitatibus ea minima optio et repellendus deserunt
-              sapiente totam nisi! Est nemo ipsum recusandae in cupiditate
-              exercitationem minus veritatis optio?
-            </p>
-        
-            </div>
-    </main>
-</section>
 <div class="bestS">
-  <h1 >Best Selling</h1>
+  <h1>Brands</h1>
+</div>
+
+<div class="brands">
+  @for (item of allBrands(); track $index) {
+    <div class="brandCard">
+      <h5> {{item}} </h5>
+     <img src="/laptoplogo.png" alt="">
+    </div>
+  }
 </div>
 
 
+<div class="bestS selling">
+  <h1>Best Selling</h1>
+  <h1 routerLink="/shop">See All Products</h1>
+</div>
 
 <app-several-products></app-several-products>
+
+
+
+</main>

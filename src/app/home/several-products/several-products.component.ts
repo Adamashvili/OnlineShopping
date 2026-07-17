@@ -4,10 +4,11 @@ import { Product } from '../../../interfaces/product';
 import { AllProductArea } from '../../../interfaces/all-product-area';
 import { ProductsAreaService } from '../../services/products-area.service';
 import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-several-products',
-  imports: [RouterModule],
+  imports: [RouterModule, CommonModule],
   templateUrl: './several-products.component.html',
   styleUrl: './several-products.component.css',
 })
@@ -18,11 +19,16 @@ export class SeveralProductsComponent implements OnInit {
   }
 
   protected productList!: Product[];
-  public altImage: string =
-    'https://media.istockphoto.com/id/1396814518/vector/image-coming-soon-no-photo-no-thumbnail-image-available-vector-illustration.jpg?s=612x612&w=0&k=20&c=hnh2OZgQGhf0b46-J2z7aHbIWwq8HNlSDaNp2wn_iko=';
+  protected currentPage: number = 1
+
+  changeProductPage(arrow: string) {
+    arrow == "+" ? this.currentPage++ : this.currentPage--
+    this.showCards()
+  }
+
 
   showCards() {
-    this.service.getCardsforHome().subscribe({
+    this.service.getCardsOnShopPage(this.currentPage, 5).subscribe({
       next: (data: AllProductArea) => {
         this.productList = data.products;
       },

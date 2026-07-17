@@ -10,16 +10,24 @@
   <section class="container">
     <main>
       @for (item of productList; track $index) {
-        <div class="card">
-         
+         <div class="card">
           <h6 [style.display]="item.stock > 0 ? 'none' : 'unset'">
             {{ item.stock <= 0 ? "Out of Stock" : "" }}
           </h6>
-          <img [src]="item.thumbnail" (error)="item.thumbnail = altImage" alt="product" />
+          <img
+            [src]="item.thumbnail"
+            (error)="item.thumbnail = '/nophoto.jpg'"
+            alt="product"
+          />
           <h4>{{ item.title }}</h4>
-          <h2>${{ item.price.current }} <span>${{ item.price.beforeDiscount }}</span></h2>
-          
-          <button routerLink="/details/{{ item._id }}">View More</button>
+          <h2>
+            {{ item.price.current | currency }}
+            @if(item.price.current < item.price.beforeDiscount) {<span>{{ item.price.beforeDiscount | currency }}</span>}
+          </h2>
+          <div class="bottomArea">
+            <i class="fa-regular fa-star"></i>
+            <button routerLink="/details/{{ item._id }}">View Product</button>
+          </div>
         </div>
       }
     </main>

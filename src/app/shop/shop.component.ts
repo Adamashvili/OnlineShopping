@@ -6,10 +6,11 @@ import { Product } from '../../interfaces/product';
 import { AllProductArea } from '../../interfaces/all-product-area';
 import { FilteredProducts } from '../../interfaces/filtered-products';
 import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-shop',
-  imports: [SidebarComponent, FormsModule, RouterModule],
+  imports: [SidebarComponent, FormsModule, RouterModule, CommonModule],
   templateUrl: './shop.component.html',
   styleUrl: './shop.component.css',
 })

@@ -37,9 +37,10 @@ section main {
 
 .card {
   width: 250px;
-  height: 350px;
-  padding: 7px;
+  height: 380px;
+  padding: 10px;
   box-shadow: 0 0 2px 1px rgb(232, 229, 229);
+  border-radius: 15px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -48,11 +49,8 @@ section main {
   overflow: hidden;
   transition: 0.3s;
   cursor: default;
-  font-family: "Murecho", sans-serif;
-  
+  font-family: "Slabo 27px", serif;
 }
-
-
 .card h6 {
   position: absolute;
   transform: rotate(-39deg);
@@ -65,7 +63,7 @@ section main {
   font-family: "Slabo 27px", serif;
 }
 .card:hover {
-  transform: scale(1.02);
+  transform: scale(1.01);
 }
 .card:hover img {
   transform: scale(1.01);
@@ -73,35 +71,64 @@ section main {
 
 .card img {
   width: 100%;
-  height: 50%;
+  height: 60%;
   object-fit: contain;
   border-radius: 20px;
   transition: 0.4s;
 }
 
 .card h4 {
-  font-weight: 400;
-  text-shadow: 0 0 1px black;
-  font-family: "Murecho", sans-serif;
+  font-weight: 500;
+  font-family: "Google Sans Flex", sans-serif;
+  font-size: 14px;
 }
 
 .card span {
   color: #7f56d9;
-  font-weight: bold;
-  font-size: 14px;
+  font-weight: 500;
   text-decoration: line-through;
+  font-size: 13px;
+}
+
+.bottomArea {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  align-items: center;
+  gap: 10px;
+}
+
+.bottomArea i {
+  border-radius: 50%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 5px rgb(204, 203, 203);
+  color: #7f56d9;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.bottomArea i:hover {
+  box-shadow: 0 0 5px #7f56d9;
 }
 
 .card button {
-  height: 35px;
+  height: 40px;
   border: none;
   cursor: pointer;
   background-color: #7f56d9;
+  border-radius: 25px;
   color: white;
   font-family: "Google Sans Flex", sans-serif;
   font-size: 15px;
-  box-shadow: 2px 3px 5px #7f56d9;
+  transition: 0.4s;
 }
+
+.card button:hover {
+  box-shadow: 2px 1px 9px -1px #7f56d9;
+}
+
 
 .pages {
   display: flex;
@@ -141,11 +168,7 @@ section main {
   background-color: #7c2ae6;
 }
 
-.bottomArea {
-  display: flex;
-  justify-content: space-between;
-  padding-right: 50px;
-}
+
 
 .sizePerPage {
   display: flex;

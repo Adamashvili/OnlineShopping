@@ -1,6 +1,14 @@
 <nav appScrolling>
-  <h1 routerLink="/"><i class="fa-solid fa-store"></i> Shopping Mall</h1>
-  <div class="account">
+  <h1 routerLink="/"> <img src="/logo.jpg" alt=""> Electronics Mall </h1>
+  <div class="search">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <input type="search" placeholder="What are you looking for?" [(ngModel)]="searchWord">
+  </div>
+  <div class="user">
+    <i class="fa-solid fa-cart-shopping"></i>
+    <button> <i class="fa-regular fa-user"></i> LOGIN</button>
+  </div>
+  <!-- <div class="account">
     @if (!isLoggedIn) {
     <button (click)="showRegister()">
       <i class="fa-regular fa-id-card"></i> Create Account
@@ -12,9 +20,9 @@
     <button routerLink="/profile" ><img [src]="userImg" alt="">{{userName}}</button>
     <button (click)="signOut()"><i class="fa-solid fa-right-to-bracket"></i> Sign Out</button>
     }
-  </div>
+  </div> -->
 </nav>
-
+<app-nav-searching-panel [searchWord]="searchWord"></app-nav-searching-panel>
 @if (isSignShow) {
 <app-sign-in
   (closeEmit)="closeForm($event)"

@@ -13,7 +13,8 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  
+  font-family: "Google Sans Flex", sans-serif;
+  cursor: default;
 }
 :root {
   interpolate-size: allow-keywords;

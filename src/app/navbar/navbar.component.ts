@@ -5,6 +5,8 @@ import { ScrollingDirective } from '../../directives/scrolling.directive';
 import { RouterModule } from '@angular/router';
 import { ToolsService } from '../services/tools.service';
 import { CookieService } from 'ngx-cookie-service';
+import { NavSearchingPanelComponent } from "../nav-searching-panel/nav-searching-panel.component";
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-navbar',
@@ -14,7 +16,9 @@ import { CookieService } from 'ngx-cookie-service';
     ScrollingDirective,
     RouterModule,
     RouterModule,
-  ],
+    NavSearchingPanelComponent,
+    FormsModule
+],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css',
 })
@@ -39,6 +43,7 @@ export class NavbarComponent implements OnInit {
   public userImg: any;
   public userName: any;
   public user: any;
+  public searchWord: string = ""
 
   signInForm() {
     this.tools.isSignedIn.next(true);

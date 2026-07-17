@@ -1,98 +1,82 @@
-@if (prodINFO) {
-<section class="container detailArea">
-  <div class="left">
-    <img class="mainImg" [src]="mainImage" (error)="mainImage = altImage" alt="" />
-    <div class="otherIMGS">
-      @for (item of allImages; track $index) {
-      <img
-        [class.activeImg]="item === mainImage"
-        (click)="zoomImg(item)"
-        [src]="item"
-        (error)="$any($event.target).src = altImage"
-        alt=""
-      />
-      }
-    </div>
-  </div>
-  <div class="middle">
-    <h2>
-      {{ prodINFO.title }}
-    </h2>
-    <div class="rating">
-      <div class="stars">
-        @if (starNum == 0) {
-        <h5>No Rating</h5>
-        } @else { @for (item of [].constructor(starNum ); track $index) {
-        <i class="fa-solid fa-star"></i>
-        }
-        <span>{{ prodINFO.rating }}</span>
 
-        }
+<main>
+  @if (prodINFO) {
+    <header>
+      <h5><i class="fa-solid fa-phone"></i> *3333 / (0322) 255-55-55</h5>
+      <div class="right">
+        <h4>Blog</h4>
+        <h4>Shops</h4>
+        <h4>Sales</h4>
       </div>
+    </header>
+    <div class="linkInfo">
+      <div class="address">
+        <p routerLink="/">Main Page</p>
+        <i class="fa-solid fa-angle-right"></i>
+        <p routerLink="/shop">Computer Techics and Accessories</p>
+        <i class="fa-solid fa-angle-right"></i>
+        <p>{{ prodINFO.category.name }}</p>
+      </div>
+      <p>code: {{ prodINFO._id }}</p>
     </div>
-    @if (prodINFO.stock > 0) {
-    <h4 style="color: green">
-      <i class="fa-solid fa-check"></i> {{ prodINFO.stock }} In stock
-    </h4>
-    } @else {
-    <h4 style="color: red"><i class="fa-solid fa-xmark"></i> Not in stock</h4>
-    }
+    <section>
+      <div class="gallery">
+        <div class="aside">
+          @for (item of allImages; track $index) {
+            <img
+              [src]="item"
+              [class.activeImg]="item === mainImage"
+              (click)="zoomImg(item)"
+              alt="Image"
+              (error)="$any($event.target).src = '/nophoto.jpg'"
+            />
+          }
+        </div>
+        <img
+          [src]="mainImage"
+          (error)="mainImage = altImage"
+          class="mainImg"
+          alt=""
+        />
+      </div>
+      <div class="details">
+        <h3>{{ prodINFO.title }}</h3>
+        <div class="info">
+          <div class="top">
+            <div class="property">
+              <p>Available in Shops:</p>
+              <p>Brand:</p>
+              <p>Issue Date:</p>
+              <p>warrany</p>
+            </div>
+            <div class="prodValue">
+              <h4 [style.color]="prodINFO.stock <= 0 ? 'red' : ''">
+                {{ prodINFO.stock }}
+              </h4>
+              <h4>{{ prodINFO.brand }}</h4>
+              <h4>{{ prodINFO.issueDate | date }}</h4>
+              <h4>{{ prodINFO.warranty }} years</h4>
+            </div>
+          </div>
+          <div class="bottom">
+            <h2>
+              {{ prodINFO.price.current | currency }}
+              @if (prodINFO.price.current < prodINFO.price.beforeDiscount) {
+                <span>{{ prodINFO.price.beforeDiscount | currency }}</span>
+              }
+            </h2>
+            <p>From <span>$150</span> Monthly</p>
+            <div class="down">
+              <button [disabled]="prodINFO.stock <= 0">
+                <i class="fa-solid fa-cart-shopping"></i> Add To Cart
+              </button>
+              <button><i class="fa-regular fa-star"></i> Rate Product</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  }
+</main>
 
-    <ul>
-      <li> <span>Category:</span> {{ prodINFO.category.name }}</li>
-      <li> <span>Brand:</span> {{ prodINFO.brand }}</li>
-      <li> <span>Issue Date:</span> {{ prodINFO.issueDate | date }}</li>
-    </ul>
-    <div class="desc">
-      <h3>Description</h3>
-      <div class="line"></div>
-    </div>
-
-    <p>
-      {{ prodINFO.description }}
-    </p>
-  </div>
-  <div class="right">
-    @if (prodINFO.price.discountPercentage != 0) {
-    <h2 class="disc">-{{ prodINFO.price.discountPercentage }}%</h2>
-    }
-
-    <div class="prices">
-      <h1>{{ prodINFO.price.current | currency }}</h1>
-      @if (prodINFO.price.current != prodINFO.price.beforeDiscount) {
-      <h1 class="beforeDisc">{{ prodINFO.price.beforeDiscount | currency }}</h1>
-      }
-    </div>
-
-    <div class="quantity">
-      <button [disabled]="prodQuant == 1" (click)="decrease()">-</button>
-      <h2>{{ prodQuant }}</h2>
-      <button (click)="increase()">+</button>
-    </div>
-    <button [disabled]="prodINFO.stock <= 0" (click)="cartBTN(prodINFO._id)" class="cartBtn">
-      <i class="fa-solid fa-cart-shopping"></i> Add To cart
-    </button>
-    <h4 #addShow class="addSms">Product added succesfully</h4>
-    <div class="line"></div>
-    <div class="delivInfos">
-      <p><i class="fa-solid fa-truck-fast"></i>Worldwide shipping</p>
-      <p><i class="fa-solid fa-table-cells-row-lock"></i> Secure payment</p>
-      <p>
-        <i class="fa-solid fa-calendar-check"></i> {{ prodINFO.warranty }} years
-        full warranty
-      </p>
-    </div>
-  </div>
-</section>
-
-
-
-<app-related-prods 
-[categoryID]="prodINFO.category.id"
-(otherRelated)="otherRelatedArea($event)"
-></app-related-prods>
-
-}
-
-
-<app-sign-err></app-sign-err>
+<!-- <app-sign-err></app-sign-err> -->

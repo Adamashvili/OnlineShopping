@@ -55,15 +55,11 @@ export class ProductsAreaService {
     );
   }
 
-  getCardsforHome() {
-    return this.http.get<AllProductArea>(
-      'https://api.everrest.educata.dev/shop/products/all?page_index=3&page_size=10',
-    );
-  }
 
-  getCardsOnShopPage(page: any) {
+
+  getCardsOnShopPage(page: any, size:any = 15) {
     return this.http.get<AllProductArea>(
-      `https://api.everrest.educata.dev/shop/products/all?page_index=${page}&page_size=15`,
+      `https://api.everrest.educata.dev/shop/products/all?page_index=${page}&page_size=${size}`,
     );
   }
 

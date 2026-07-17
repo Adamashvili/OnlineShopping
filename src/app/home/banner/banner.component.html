@@ -1,17 +1,16 @@
 <section>
-    <main class="container">
-        <div class="infos">
-            <h1>Sale 20% Off On Everything</h1>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea, minima?
-              Ducimus quis dicta velit incidunt voluptatum. Dolores deleniti facere
-              fugiat voluptas aut ab quidem reiciendis officiis, vitae explicabo, at
-              consequuntur necessitatibus ea minima optio et repellendus deserunt
-              sapiente totam nisi! Est nemo ipsum recusandae in cupiditate
-              exercitationem minus veritatis optio?
-            </p>
-            <button routerLink="/shop">Shop Now</button>
-          </div>
-    </main>
-  
+ @if (randomProduct()) {
+   <main class="container">
+    <div class="infos">
+      <h2>Best Offer</h2>
+      <h1> {{randomProduct()?.title}} </h1>
+      <h4>For only  {{randomProduct().price?.current | currency}} </h4>
+      <p> {{randomProduct()?.description}} </p>
+      <button routerLink="/details/{{randomProduct()._id}}" >View Product <i class="fa-solid fa-arrow-right"></i>  </button>
+    </div>
+    <div class="photo">
+      <img [src]="randomProduct()?.thumbnail" (error)="randomProduct().thumbnail = '/nophoto.jpg' " alt="" />
+    </div>
+  </main>
+ }
 </section>

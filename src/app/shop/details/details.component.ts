@@ -1,8 +1,7 @@
 import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { ActivatedRoute, Params, Router, RouterLink } from '@angular/router';
 import { ProductsAreaService } from '../../services/products-area.service';
 import { CommonModule } from '@angular/common';
-import { RelatedProdsComponent } from './related-prods/related-prods.component';
 import { Product } from '../../../interfaces/product';
 import { SignErrComponent } from '../../sign-err/sign-err.component';
 import { ToolsService } from '../../services/tools.service';
@@ -12,7 +11,7 @@ import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-details',
-  imports: [CommonModule, RelatedProdsComponent, SignErrComponent],
+  imports: [CommonModule, SignErrComponent, RouterLink],
   templateUrl: './details.component.html',
   styleUrl: './details.component.css',
 })
@@ -30,7 +29,7 @@ export class DetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getParam();
-    this.getFullInfoProduct(this.prodID);
+   
   }
 
   public prodID!: string;
@@ -46,20 +45,12 @@ export class DetailsComponent implements OnInit {
 
   getParam() {
     this.actR.params.subscribe((data: Params) => {
-      this.prodID = data['id'];
-    });
-  }
-
-  otherRelatedArea(pageID: string) {
-    this.getFullInfoProduct(pageID);
-  }
-
-  getFullInfoProduct(pageID: string) {
-    this.service.getProductDetailInfo(pageID).subscribe((data: Product) => {
+      this.service.getProductDetailInfo(data['id']).subscribe((data: Product) => {
       this.prodINFO = data;
       this.mainImage = data.images[0];
       this.allImages = data.images;
       this.starNum = Math.round(data.rating);
+    });
     });
   }
 
