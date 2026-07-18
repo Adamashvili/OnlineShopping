@@ -43,11 +43,18 @@ header .right {
   cursor: pointer;
 }
 
-section {
+.full-description {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  min-height: 400px;
+  min-height: 650px;
   gap: 40px;
+  
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
 }
 
 .gallery {
@@ -87,6 +94,13 @@ section {
   object-fit: contain;
 }
 
+.details {
+  display: flex;
+  flex-direction: column;
+  
+  gap: 5px;
+}
+
 .details .info {
   border: 1px solid #ece4f8;
   border-radius: 20px;
@@ -116,6 +130,37 @@ section {
   text-align: end;
   font-weight: 500 !important;
 }
+.up {
+  border-bottom: 0.5px solid rgb(214, 212, 212);
+  padding-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.up .quantity {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  
+}
+
+.quantity button {
+  width: 40px;
+  height: 40px;
+  border: none;
+  background-color: white;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.quantity button:disabled {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.quantity p {
+  font-size: 16px !important;
+}
 
 .bottom {
   background-color: #f6f5fc;
@@ -124,7 +169,7 @@ section {
   border-top: 1px solid #ece4f8;
 }
 
-.bottom .down {
+.down {
   display: flex;
   gap: 10px;
 }
@@ -135,8 +180,7 @@ section {
   font-weight: 600;
 }
 .bottom p {
-  border-bottom: 0.5px solid rgb(214, 212, 212);
-  padding-bottom: 20px;
+  
   color: #666666;
   font-size: 11px;
   margin: 5px 0;
@@ -149,7 +193,7 @@ section {
   letter-spacing: 1px;
 }
 
-.down button {
+.down button, .rateCard button  {
   width: 50%;
   height: 50px;
   border-radius: 25px;
@@ -171,7 +215,71 @@ section {
   color: white;
 }
 
-.down button:hover {
+.down button:hover, .up .quantity button:hover, .rateCard button:hover  {
   transform: scale(1.02);
-  box-shadow: 3px 2px 8px -1px #7f12cd;
+  box-shadow: 2px 2px 5px -1px #7f12cd;
 }
+
+
+.aboutProduct {
+  margin-top: 20px;
+  background-color: #F6F5FC;
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.aboutProduct h4, .rateCard h4 {
+  border-bottom: 1px solid rgb(188, 185, 185);
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+.aboutProduct p {
+  font-size: 15px;
+  text-align: justify;
+}
+
+
+.rateCard {
+  height: 200px;
+  background-color: green;
+  border-radius: 20px;
+  background-color: #F6F5FC;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+  text-align: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.3s;
+}
+
+.showRateCard {
+  opacity: 1;
+  visibility: visible;
+}
+
+.rateCard h4 {
+  margin-bottom: 0;
+}
+
+
+
+
+.rateCard .stars {
+  
+  display: flex;
+  justify-content: center;
+  font-size: 35px;
+  gap: 30px;
+}
+
+.stars i {
+  color: #666666;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+

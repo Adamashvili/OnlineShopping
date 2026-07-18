@@ -1,4 +1,12 @@
-import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  OnInit,
+  QueryList,
+  Renderer2,
+  ViewChild,
+  ViewChildren,
+} from '@angular/core';
 import { ActivatedRoute, Params, Router, RouterLink } from '@angular/router';
 import { ProductsAreaService } from '../../services/products-area.service';
 import { CommonModule } from '@angular/common';
@@ -24,33 +32,34 @@ export class DetailsComponent implements OnInit {
     private _cookie: CookieService,
     private apiArea: ApiAreaService,
     private cartServ: CartAreaService,
-    private renderer: Renderer2
+    private renderer: Renderer2,
   ) {}
 
   ngOnInit(): void {
     this.getParam();
-   
   }
-
+  @ViewChild('addShow') addShow!: ElementRef;
+  @ViewChildren('rateStar') allStars!: QueryList<ElementRef>;
   public prodID!: string;
   public prodINFO: any;
   public mainImage!: string;
   public allImages!: string[];
   public starNum!: number;
   public prodQuant: number = 1;
+  public isRateCardShown: boolean = false
   public altImage: string =
     'https://media.istockphoto.com/id/1396814518/vector/image-coming-soon-no-photo-no-thumbnail-image-available-vector-illustration.jpg?s=612x612&w=0&k=20&c=hnh2OZgQGhf0b46-J2z7aHbIWwq8HNlSDaNp2wn_iko=';
 
-  @ViewChild("addShow") addShow!: ElementRef
-
   getParam() {
     this.actR.params.subscribe((data: Params) => {
-      this.service.getProductDetailInfo(data['id']).subscribe((data: Product) => {
-      this.prodINFO = data;
-      this.mainImage = data.images[0];
-      this.allImages = data.images;
-      this.starNum = Math.round(data.rating);
-    });
+      this.service
+        .getProductDetailInfo(data['id'])
+        .subscribe((data: Product) => {
+          this.prodINFO = data;
+          this.mainImage = data.images[0];
+          this.allImages = data.images;
+          this.starNum = Math.round(data.rating);
+        });
     });
   }
 
@@ -58,12 +67,8 @@ export class DetailsComponent implements OnInit {
     this.mainImage = currImg;
   }
 
-  increase() {
-    this.prodQuant++;
-  }
-
-  decrease() {
-    this.prodQuant--;
+  updateQuantity(action: string) {
+    action == '+' ? this.prodQuant++ : this.prodQuant--;
   }
 
   errorSMS() {
@@ -71,7 +76,7 @@ export class DetailsComponent implements OnInit {
   }
 
   cartBTN(id: string) {
-    if (this._cookie.get("user")) {
+    if (this._cookie.get('user')) {
       const prodInfoCart = {
         id: id,
         quantity: this.prodQuant,
@@ -81,14 +86,31 @@ export class DetailsComponent implements OnInit {
         data.cartID
           ? this.cartServ.addtoCart(prodInfoCart).subscribe()
           : this.cartServ.createCart(prodInfoCart).subscribe();
-          this.renderer.setStyle(this.addShow.nativeElement, "bottom", "0")
-          setTimeout(() => {
-            this.renderer.setStyle(this.addShow.nativeElement, "bottom", "-100px")
-          }, 2000);
+        this.renderer.setStyle(this.addShow.nativeElement, 'bottom', '0');
+        setTimeout(() => {
+          this.renderer.setStyle(
+            this.addShow.nativeElement,
+            'bottom',
+            '-100px',
+          );
+        }, 2000);
       });
+    } else {
+      this.tools.isErrSMS.next(true);
     }
-    else {
-      this.tools.isErrSMS.next(true)
-    }
+  }
+
+  chooseRate(rateNum: number) {
+    this.allStars.forEach((item) => {
+      if (rateNum >= item.nativeElement.id) {
+        item.nativeElement.style.color = '#FEB602';
+      }
+    });
+  }
+
+  resetStars() {
+    this.allStars.forEach((item) => {
+      item.nativeElement.style.color = '#666666';
+    });
   }
 }
