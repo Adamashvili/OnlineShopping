@@ -1,227 +1,227 @@
 .signArea {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    backdrop-filter: blur(5px) brightness(30%);
-    font-family: "Poppins", serif;
-    z-index: 999;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(5px) brightness(50%);
+  font-family: "Poppins", serif;
+  z-index: 9999999;
 }
 
 form {
-    width: 700px;
-    background-color: white;
-    padding: 30px;
-    border-radius: 5px;
-    position: relative;
-    animation: smoothSlide 1s 1 forwards ease-in-out;
+  width: 700px;
+  background-color: white;
+  padding: 30px;
+  overflow: hidden;
+  border-radius: 15px;
+  position: relative;
+  /* animation: smoothSlide 1s 1 forwards ease-in-out; */
 }
 small {
-    position: absolute;
-    top: 10px;
-    left: 50%;
-    transform: translate(-50%);
-    display: flex;
-    align-items: center;
-    gap: 5px;
-   
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translate(-50%);
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 
 .success {
-    color: green;
+  color: green;
 }
 
 .errors {
-    position: absolute;
-    right: 50px;
-    top: 5px;
-
+  position: absolute;
+  right: 50px;
+  top: 5px;
 }
 
 .errors li {
-    color: red;
-    font-size: 9px;
-    list-style: none;
-    font-weight: 600;
+  color: red;
+  font-size: 9px;
+  list-style: none;
+  font-weight: 600;
 }
 
 .errors li i {
-    font-size: 7px;
+  font-size: 7px;
 }
 
-
 form h1 {
-    position: relative;
-    font-weight: 600;
+  position: relative;
+  font-weight: 600;
 }
 
 form h1::after {
-    content: "";
-    position: absolute;
-    width: 35px;
-    height: 3px;
-    background-color: #7C2AE6;
-    bottom: 0;
-    left: 0;
+  content: "";
+  position: absolute;
+  width: 35px;
+  height: 3px;
+  background-color: #7c2ae6;
+  bottom: 0;
+  left: 0;
 }
 
 .fa-x {
-    position: absolute;
-    right: 0;
-    top: 0;
-    font-size: 20px;
-    width: 50px;
-    height: 30px;
-    background-color:#7C2AE6;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-bottom-left-radius: 10px;
-    cursor: pointer;
-    transition: 0.2s;
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 20px;
+  width: 50px;
+  height: 30px;
+  background-color: #7c2ae6;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom-left-radius: 10px;
+  cursor: pointer;
+  transition: 0.2s;
 }
 
 .fa-x:hover {
-    background-color: red;
-    box-shadow: 0 2px 15px 1px red;
+  background-color: red;
+  box-shadow: 0 2px 15px 1px red;
 }
-
-
 
 form .content {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 10px;
-
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 20px;
 }
 
-.content .area, .bottomContent .imageArea {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    padding-bottom: 5px;
-    position: relative;
+.content .area,
+.bottomContent .imageArea {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-bottom: 5px;
+  position: relative;
 }
 
-.content .area i, .bottomContent .imageArea i {
-    position: absolute;
-    top: 40px;
-    left: 10px;
-    color: #7C2AE6;
+.content .area i,
+.bottomContent .imageArea i {
+  position: absolute;
+  top: 40px;
+  left: 10px;
+  color: #735EA8;
 }
 
+.area input,
+.area select {
+  width: 100%;
+  height: 40px;
+  padding-left: 30px;
+  outline: none;
+  cursor: pointer;
+  border-radius: 15px;
+  transition: 0.3s;
+  border: 0.4px solid rgb(101, 100, 100);
+  box-shadow: inset 2px 2px 4px -1px rgb(174, 174, 174);
+}
 
-.area input {
-    width: 300px;
-    height: 35px;
-    padding-left: 30px;
-    outline: none;
+.area input:hover, .area input:focus,
+.area select:hover, .area select:focus {
+    box-shadow: inset 2px 2px 4px -1px rgb(43, 42, 42);
+    background-color: rgb(254, 254, 254);
 }
 
 input.ng-dirty.ng-invalid {
-    border: 2px solid red;
-}
-
-.bottomContent {
-    display: flex;
-    flex-direction: column;
+  box-shadow: inset 2px 2px 7px -1px darkred;
+    background-color: rgb(254, 254, 254);
 }
 
 
-.imageArea input {
-    height: 35px;
-    padding-left: 30px;
-    outline: none;
-}
 
 .bottomContent .chooseArea {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
 }
 
 .chooseArea .choose {
-    display: flex;
-    gap: 10px;
-    padding-bottom: 10px;
+  display: flex;
+  gap: 10px;
+  padding-bottom: 10px;
+}
+.bottomContent {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
 }
 
 form button {
-    height: 40px;
-    border: none;
-    border-radius: 5px;
-    background-color: #7C2AE6;
-    color: white;
-    font-size: 17px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: 0.4s;
+  width: 150px;
+  height: 40px;
+  border: none;
+  border-radius: 25px;
+  background-color: #7c2ae6;
+  color: white;
+  font-size: 17px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.4s;
 }
 
 form button:disabled {
-    background-color: #22004e;
-    
+  background-color: #22004e;
 }
 form button:disabled:hover {
-    box-shadow: none;
-    background-color: #22004e;
+  box-shadow: none;
+  background-color: #22004e;
 }
 
 form button:hover {
-    background-color: #670bdf;
-    box-shadow: 0 0 10px 1px #7C2AE6;
+  background-color: #670bdf;
+  box-shadow: 0 0 10px 1px #7c2ae6;
 }
 
+@media screen and (max-width: 768px) {
+  form {
+    width: 60%;
+    height: 90%;
+    padding: 10px;
+    overflow: scroll;
+    transform: scale(0.8) !important;
+  }
 
-@media screen and (max-width:768px) {
+  form h1 {
+    font-size: 20px;
+    text-align: center;
+  }
 
-    form {
-        width: 60%;
-        height: 90%;
-        padding: 10px;
-        overflow: scroll;
-        transform: scale(0.8) !important;
-    }
+  form h1::after {
+    width: 100%;
+    bottom: -8px;
+  }
+  form .content {
+    flex-direction: column;
+    transform: scale(0.9);
+    margin-bottom: 0;
+    gap: 0;
+  }
 
-    form h1 {
-        font-size: 20px;
-        text-align: center;
-    }
+  form .bottomContent {
+    transform: scale(0.9);
+    margin-top: 0;
+  }
 
-    form h1::after {
-        width: 100%;
-        bottom: -8px;
-    }
-    form .content {
-        flex-direction: column;
-        transform: scale(0.9);
-        margin-bottom: 0;
-        gap: 0;
-    }
+  .bottomContent .imageArea {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+  }
 
-    form .bottomContent {
-        transform: scale(0.9);
-        margin-top: 0;
-    }
+  form .content {
+    margin-top: 0;
+  }
 
-    .bottomContent .imageArea  {
-        margin-bottom: 15px;
-        display: flex;
-        flex-direction: column;
-    }
-
-
-    
-
-    form .content {
-        margin-top: 0;
-    }
-
-    .content input {
-        width: 100%;
-    }
+  .content input {
+    width: 100%;
+  }
 }

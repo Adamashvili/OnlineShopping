@@ -44,7 +44,7 @@ export class SignInComponent {
             firstName: data.firstName,
             avatar: data.avatar,
           };
-           this.tools.userNavbarInfo.next(userInfo)
+           this.tools.userNavbarInfo.set(userInfo)
            this._cookie.set("userInfo", JSON.stringify(userInfo), 1)
         });
 

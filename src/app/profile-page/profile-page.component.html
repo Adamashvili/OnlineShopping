@@ -1,4 +1,55 @@
-@if (isProfileInfoShown) {
+<div class="userArea">
+  <div class="user">
+    <img [src]="tools.userNavbarInfo().avatar" alt="">
+    <div class="fullName">
+      <h3> {{tools.userNavbarInfo().firstName}} </h3>
+      <h4> {{tools.userNavbarInfo().lastName}} </h4>
+    </div>
+  </div>
+  <div class="personalInfo">
+    
+     <article class="categories">
+    <h3 (click)="personalInfo.classList.toggle('toggleBrands')">
+      Personal Info
+      <i
+        class="fa-solid fa-angle-{{
+          personalInfo.classList.contains('toggleBrands') ? 'up' : 'down'
+        }}"
+      ></i>
+    </h3>
+    <ul #personalInfo>  
+      <form [formGroup]="profileToUpdate">
+        <li><strong>First Name:</strong> <input [readOnly]="!canChangeBio" type="text" formControlName="firstName" >  </li>
+        <li><strong>Last Name:</strong> <input [readOnly]="!canChangeBio" type="text" formControlName="lastName" >  </li>
+        <li><strong>Location:</strong> <input [readOnly]="!canChangeBio" type="text" formControlName="address" >   </li>
+        <li><strong>Phone:</strong> <input [readOnly]="!canChangeBio" type="text" formControlName="phone" >   </li>
+        <li><strong>Email:</strong> <span> {{tools.userNavbarInfo().email}} </span>  </li>
+        <li><strong>Age:</strong> <input [readOnly]="!canChangeBio" type="text" formControlName="age" >  </li>
+        <li><strong>Gender:</strong> <input [readOnly]="!canChangeBio" type="text" formControlName="gender" >  </li>
+        <li><strong>Image:</strong> <input [readOnly]="!canChangeBio" type="text" formControlName="avatar" >  </li>
+      </form>
+        
+    </ul>
+  </article>
+     <article class="categories">
+    <h3 (click)="accountPrivacy.classList.toggle('toggleBrands')">
+      Account Privacy
+      <i
+        class="fa-solid fa-angle-{{
+          accountPrivacy.classList.contains('toggleBrands') ? 'up' : 'down'
+        }}"
+      ></i>
+    </h3>
+    <ul #accountPrivacy>  
+        <li (click)="canChangeBio = !canChangeBio">Change Your Bio @if (canChangeBio) { <strong (click)="updateBio()">Update</strong>}</li>
+        <li>Update Password</li>
+        
+    </ul>
+  </article>
+  </div>
+</div>
+
+<!-- @if (isProfileInfoShown) {
 
   <app-editprofile (closeEmitter)="closeProfileInfo($event)"></app-editprofile>
 }
@@ -83,4 +134,4 @@
         <button routerLink="/shop">Go To Shopping</button>
     </div>
 }
-}
+} -->

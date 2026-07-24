@@ -1,216 +1,205 @@
 .signArea {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    backdrop-filter: blur(5px) brightness(30%);
-    font-family: "Poppins", serif;
-    z-index: 999;
-  
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(5px) brightness(30%);
+  font-family: "Slabo 27px", serif;
+  z-index: 999999999;
 }
 
 .card {
-    display: flex;
-    border-radius: 7px;
-    width: 50%;
-    background-color: white;
-    position: relative;
-    animation: smoothSlide 1s 1 forwards ease-in-out;
+  display: flex;
+  border-radius: 7px;
+  width: 50%;
+  background-color: white;
+  position: relative;
+  animation: smoothSlide 1s 1 forwards ease-in-out;
 }
 
 .fa-x {
-    position: absolute;
-    right: 0;
-    top: 0;
-    font-size: 20px;
-    width: 50px;
-    height: 30px;
-    background-color:#7C2AE6;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-bottom-left-radius: 10px;
-    cursor: pointer;
-    transition: 0.2s;
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 20px;
+  width: 50px;
+  height: 30px;
+  background-color: #7F56D9;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom-left-radius: 10px;
+  cursor: pointer;
+  transition: 0.2s;
 }
 
 .fa-x:hover {
-    background-color: red;
-    box-shadow: 0 2px 15px 1px red;
+  background-color: red;
+  box-shadow: 0 2px 15px 1px red;
 }
-
-
 
 form {
-    width: 50%;
-    height: 500px;
-    padding: 30px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    position: relative;
+  width: 50%;
+  height: 500px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  position: relative;
 }
 small {
-    position: absolute;
-    top: 10px;
-    left: 50%;
-    transform: translate(-50%);
-    display: flex;
-    align-items: center;
-    gap: 5px;
-   
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translate(-50%);
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 
 .success {
-    color: green;
+  color: green;
 }
 
 .err {
-    color: red;
+  color: red;
 }
 
 .area {
-    position: relative;
+  position: relative;
 }
 
 .area input {
-    width: 100%;
-    height: 35px;
-    border: none;
-    border-bottom: 2px solid grey;
-    padding-left: 35px;
-    outline: none;
-    font-family: "Poppins", serif;
-    font-size: 16px;
+  width: 100%;
+  height: 35px;
+  border: none;
+  border-bottom: 2px solid grey;
+  padding-left: 35px;
+  outline: none;
+
+  font-size: 16px;
 }
 
 input.ng-dirty.ng-invalid {
-    border-bottom: 2px solid red;
+  border-bottom: 2px solid red;
 }
 
 input::placeholder {
-    font-family: "Poppins", serif;
-    font-weight: 500;
+  font-weight: 500;
 }
 
 .area i {
-    position: absolute;
-    top: 5px;
-    left: 3px;
-    color: #7C2AE6;
-    font-size: 20px;
+  position: absolute;
+  top: 5px;
+  left: 3px;
+  color: #7F56D9;
+  font-size: 20px;
 }
 
-form p, form span {
-    color: #7C2AE6;
-    font-weight: 600;
-    cursor: pointer;
-    
+form p,
+form span {
+  color: #7F56D9;
+  font-weight: 600;
+  cursor: pointer;
 }
 
 form h1 {
-    position: relative;
-    font-weight: 600;
+  position: relative;
+  font-weight: 600;
 }
 
 form h1::after {
-    content: "";
-    position: absolute;
-    width: 30px;
-    height: 3px;
-    background-color: #7C2AE6;
-    bottom: 0;
-    left: 0;
+  content: "";
+  position: absolute;
+  width: 30px;
+  height: 3px;
+  background-color: #7F56D9;
+  bottom: 0;
+  left: 0;
 }
 
 form h3 {
-    text-align: center;
-    font-size: 15px;
-    font-weight: 600;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 600;
 }
 
-
 form button {
-    height: 55px;
-    border: none;
-    border-radius: 5px;
-    background-color: #7C2AE6;
-    color: white;
-    font-size: 17px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: 0.4s;
+  height: 55px;
+  border: none;
+  border-radius: 5px;
+  background-color: #7F56D9;
+  color: white;
+  font-size: 17px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.4s;
 }
 
 form button:disabled {
-    background-color: #22004e;
-    
+  background-color: #22004e;
 }
 form button:disabled:hover {
-    box-shadow: none;
-    background-color: #22004e;
+  box-shadow: none;
+  background-color: #22004e;
 }
 
 form button:hover {
-    background-color: #670bdf;
-    box-shadow: 0 0 10px 1px #7C2AE6;
+  background-color: #670bdf;
+  box-shadow: 0 0 10px 1px #7c2ae6;
 }
 
 .rightBack {
-    width: 50%;
-    height: 500px;
-    background-image: url("/signinbanner.webp");
-    background-size: cover;
-    background-position: bottom;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    position: relative;
-    padding: 70px;
-    
-
+  width: 50%;
+  height: 500px;
+  background-image: url("/signinbanner.webp");
+  background-size: cover;
+  background-position: bottom;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  padding: 70px;
 }
 
 .rightBack::after {
-    content: '';
-    width: 100%;
-    height: 100%;
-    background-color: #7C2AE6;
-    position: absolute;
-    top: 0;
-    left: 0;
-    opacity: 0.4;
-    
-    
+  content: "";
+  width: 100%;
+  height: 100%;
+  background-color: #7F56D9;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0.4;
 }
 
-.rightBack h1, .rightBack p {
-    color: white;
-    z-index: 1;
-    text-align: center;
-    font-weight: bold;
-    
+.rightBack h1,
+.rightBack p {
+  color: white;
+  z-index: 1;
+  text-align: center;
+  font-weight: bold;
 }
-
 
 @media screen and (max-width: 998px) {
-    .card {
-        width: 70%;
-        transform: scale(0.6) !important;
-    }
+  .card {
+    width: 70%;
+    transform: scale(0.6) !important;
+  }
 }
 
 @media screen and (max-width: 768px) {
-    .card {
-        flex-direction: column;
-    }
+  .card {
+    flex-direction: column;
+  }
 
-    form, .rightBack {
-        width: 100%;
-    }
+  form,
+  .rightBack {
+    width: 100%;
+  }
 }

@@ -1,12 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { SignInComponent } from '../sign-in/sign-in.component';
 import { SignUpComponent } from '../sign-up/sign-up.component';
 import { ScrollingDirective } from '../../directives/scrolling.directive';
 import { RouterModule } from '@angular/router';
 import { ToolsService } from '../services/tools.service';
 import { CookieService } from 'ngx-cookie-service';
-import { NavSearchingPanelComponent } from "../nav-searching-panel/nav-searching-panel.component";
+import { NavSearchingPanelComponent } from '../nav-searching-panel/nav-searching-panel.component';
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { ProfilePageComponent } from '../profile-page/profile-page.component';
+import { ApiAreaService } from '../services/api-area.service';
 
 @Component({
   selector: 'app-navbar',
@@ -17,16 +20,22 @@ import { FormsModule } from '@angular/forms';
     RouterModule,
     RouterModule,
     NavSearchingPanelComponent,
-    FormsModule
-],
+    FormsModule,
+    CommonModule,
+    ProfilePageComponent,
+  ],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css',
 })
 export class NavbarComponent implements OnInit {
-  constructor(private _cookie: CookieService, private tools: ToolsService) {}
+  constructor(
+    private _cookie: CookieService,
+    protected tools: ToolsService,
+    private api: ApiAreaService,
+  ) {}
 
   ngOnInit(): void {
-    this.isLoggedIn = this.userName ? true : false;
+    this.isLoggedIn = this._cookie.get('user') ? true : false;
     this.tools.isSignedIn.subscribe((info: boolean) => {
       this.isSignShow = info;
     });
@@ -40,10 +49,10 @@ export class NavbarComponent implements OnInit {
   public isSignShow: boolean = false;
   public isRegisterShow: boolean = false;
   public isLoggedIn: any;
-  public userImg: any;
-  public userName: any;
+  public isProfileInfoShown: boolean = false;
+  public userInfoNAV = signal<any>({});
   public user: any;
-  public searchWord: string = ""
+  public searchWord: string = '';
 
   signInForm() {
     this.tools.isSignedIn.next(true);
@@ -53,6 +62,7 @@ export class NavbarComponent implements OnInit {
     this._cookie.deleteAll();
     sessionStorage.clear();
     this.isLoggedIn = false;
+    this.isProfileInfoShown = false
   }
   showRegister() {
     this.tools.isSignedIn.next(false);
@@ -72,17 +82,13 @@ export class NavbarComponent implements OnInit {
   }
 
   profileInfoNav() {
-    this.tools.userNavbarInfo.subscribe((data: any) => {
-      setTimeout(() => {
-        if (data.avatar || this._cookie.get('userInfo')) {
-          let cookieUserInfo = JSON.parse(this._cookie.get('userInfo'));
-          this.isLoggedIn = true;
-          this.userImg = data.avatar || cookieUserInfo.avatar;
-          this.userName = data.firstName || cookieUserInfo.firstName;
-        } else {
-          this.isLoggedIn = false;
-        }
-      }, 0);
-    });
+    if (this._cookie.get('user')) {
+      this.api.profileInfo().subscribe({
+        next: (data: any) => {
+          this.tools.userNavbarInfo.set(data);
+        },
+        error: () => {},
+      });
+    }
   }
 }

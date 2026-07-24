@@ -1,285 +1,105 @@
-header {
-  height: 250px;
-  background-image: url("https://a-static.besthdwallpaper.com/mountains-minimalist-wallpaper-3440x1440-81063_15.jpg");
-  background-position: center;
-  background-size: cover;
-}
-
-.userHead {
-  display: flex;
-  padding: 30px 100px;
-  gap: 100px;
-  box-shadow: 0 2px 6px 1px rgb(230, 228, 228);
-  align-items: start;
-  position: relative;
-  justify-content: center;
-}
-
-.userHead img {
-  width: 250px;
-  height: 250px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-top: -100px;
-  border: 7px solid white;
-}
-
-.fa-gear {
-  position: absolute;
-  left: 105px;
-  background-color: white;
-  border-top: 2px solid rgb(223, 222, 222);
-  top: -20px;
-  cursor: pointer;
-  transition: 1s ease-in-out;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 50%;
-}
-
-.fa-gear:hover {
-  background-color: #263C51;
-  color: white;
-  transform: rotate(500deg);
-
-}
-.areaSetting {
-  
-  position: relative;
-}
-
-.settings {
- 
-  box-shadow: 0 0 10px rgb(223, 222, 222);
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
-  gap: 15px;
-  width: 250px;
-  height: 100%;
-  border-radius: 10px;
-  transition: 0.3s;
-  transform: rotateX(70deg) translateY(-200px) scale(0);
-}
-
-.settingShowHide {
-  transform: none;
-  
-}
-
-.settings li {
-  background-color: #366577;
-  color: white;
-  padding: 10px 15px;
-  text-align: center;
-  border-radius: 7px;
-  font-family: "Tilt Neon", sans-serif;
-  cursor: pointer;
-  box-shadow: inset 0 0 30px  black;
-  transition: 0.5s;
-}
-
-.settings li:last-child {
-  background-color: darkred;
-}
-
-.settings li:hover {
-  box-shadow: none;
-}
-
-.infoHead {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  font-family: "Tilt Neon", sans-serif;
-}
-.infoHead h1 {
-  position: relative;
-  width: fit-content;
-
-  letter-spacing: 1px;
-}
-
-.infoHead h1 i {
-  position: absolute;
-  font-size: 15px;
-  right: -20px;
-  color: #263C51;
-}
-
-.sideInfo {
-  display: flex;
-  gap: 30px;
-  color: grey;
-  font-weight: bold;
-  font-family: "Tilt Neon", sans-serif;
-}
-
-.sideInfo p {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-}
-
-main {
-  max-width: 1200px;
-  min-height: 650px;
-  margin: 20px auto;
-  display: flex;
-  box-shadow: 0 0 10px 2px rgb(196, 196, 196);
-  border-radius: 10px;
-  font-family: "Tilt Neon", sans-serif;
-}
-
-main .leftSide {
-  width: 70%;
-  padding: 30px;
-}
-
-.leftSide .cartHeading {
-  display: flex;
-  justify-content: space-between;
-  padding-bottom: 30px;
-  align-items: center;
-}
-
-.leftSide .listItem {
-  padding: 20px;
-  border-top: 1px solid grey;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.cartHeading h1 {
-  font-family: "Tilt Neon", sans-serif;
-}
-
-.listItem .title {
+.userArea {
   width: 300px;
+  
+  box-shadow: 0 0 4px 1px rgb(209, 208, 208);
+  position: fixed;
+  z-index: 999;
+  background-color: white;
+  right: 0px;
+  top: 65px;
+  padding: 15px 7px;
+  border-radius: 8px 0 0 8px ;
 }
 
-.listItem .title h4:first-child {
-  color: grey;
-}
 
-.listItem {
-  font-family: "Tilt Neon", sans-serif;
-}
-
-.listItem .quantity {
+.userArea .user {
   display: flex;
-  gap: 10px;
   align-items: center;
+  gap: 10px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgb(219, 218, 218);
 }
 
-.quantity button {
-  padding: 8px;
-  background-color: transparent;
-  border: 1px solid grey;
-  border-radius: 3px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-.quantity button:hover {
-  background-color: black;
-  color: white;
+.user img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  
 }
 
-.leftSide .trash {
-  padding: 7px;
-  background-color: black;
-  cursor: pointer;
-  transition: 0.3s;
-  border: none;
-  border-radius: 3px;
+.user .fullName h3, .user .fullName h4 {
+  font-family: "Slabo 27px", serif ;
+  font-size: 20px;
+  color: rgb(50, 50, 50);
 }
 
-.leftSide .trash:hover, .removeAll:hover {
-  background-color: darkred;
+article {
+  margin-top: 10px;
+  box-shadow: 0 0 8px #f2eefb;
+  border: 0.4px solid #f2eefb;
+  overflow: hidden;
 }
 
-.trash i {
-  color: white;
+article.brands ul {
+  height: auto;
 }
 
-.removeAll {
-    display: block;
-    margin-left: auto;
-    padding: 8px 15px;
-    background-color: black;
-    color: white;
-    font-family: "Tilt Neon", sans-serif;
-    transition: 0.3s;
-    cursor: pointer;
+article.brands ul.toggleBrands {
+  height: 0;
+}
+
+.toggleBrands {
+  height: auto;
 }
 
 
-main .rightSide {
-  width: 30%;
+
+ul {
+  height: 0px;
+  transition: 1s;
+  transition: height 0.5s ease-out;
+}
+
+article h3 {
+  background-color: #F9F7FE;
+  box-shadow: 0 0 1px inset rgb(196, 195, 195);
+  border-radius: 7px;
+  padding: 5px 10px;
+  font-family: "Slabo 27px", serif;
+  margin-bottom: 1px;
   display: flex;
-  flex-direction: column;
   justify-content: space-between;
-  padding: 60px 30px;
-  background-color: #dddddd;
+  align-items: center;
+  position: relative;
+  z-index: 9;
+  cursor: pointer;
 }
 
-.rightSide h1 {
-  font-family: "Tilt Neon", sans-serif;
-}
-
-.rightSide .shipping {
+li {
+  background-color: #f9f8fa;
+  margin-top: 3px;
+  padding: 4px 10px;
+  font-family: "Google Sans Flex", sans-serif;
+  cursor: pointer;
   display: flex;
-  flex-direction: column;
-  gap: 15px;
-  font-family: "Tilt Neon", sans-serif;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
 }
 
-.shipping input {
-  height: 45px;
-  padding-inline: 20px;
-  background-color: #f7f7f7;
+li input {
   border: none;
   outline: none;
-  font-family: "Tilt Neon", sans-serif;
+  text-align: end;
+  border-bottom: 0.4px solid grey;
 }
 
-.rightSide .total {
-  display: flex;
-  justify-content: space-between;
-  border-top: 1px solid grey;
-  padding-top: 40px;
-  font-family: "Tilt Neon", sans-serif;
-}
-
-.rightSide button {
-  height: 50px;
-  background-color: black;
-  color: white;
+li input:read-only {
+  background-color: transparent;
+  outline: none;
   border: none;
-  font-family: "Tilt Neon", sans-serif;
+  text-align: end;
+  cursor: default;
 }
 
-
-.noCart {
-    min-height: 300px;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    gap: 30px;
-     font-family: "Tilt Neon", sans-serif;
-    
-}
-
-.noCart button {
-    background-color: black;
-    color: white;
-    padding: 10px 30px;
-    font-family: "Tilt Neon", sans-serif;
-    cursor: pointer;
-}

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
@@ -12,5 +12,5 @@ export class ToolsService {
   public isSignedIn: BehaviorSubject<boolean> = new BehaviorSubject(false)
   public isRegistered: BehaviorSubject<boolean> = new BehaviorSubject(false)
   public isCartActive: BehaviorSubject<boolean> = new BehaviorSubject(false)
-  public userNavbarInfo: BehaviorSubject<any> = new BehaviorSubject("")
+  public userNavbarInfo = signal<any>({})
 }

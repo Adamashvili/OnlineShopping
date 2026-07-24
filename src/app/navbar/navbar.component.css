@@ -69,6 +69,7 @@ nav .search i {
   align-items: center;
   justify-content: center;
   border-radius: 50%;
+  
 }
 
 nav input:hover,
@@ -116,8 +117,20 @@ nav .user .fa-cart-shopping {
   gap: 10px;
   align-items: center;
   transition: 0.3s;
+  cursor: pointer !important;
 }
 
+
+.user button img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.signout {
+  cursor: pointer;
+  width: 35px !important;
+}
 
 
 @media screen and (max-width: 800px) {

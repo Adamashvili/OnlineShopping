@@ -6,22 +6,20 @@
   </div>
   <div class="user">
     <i class="fa-solid fa-cart-shopping"></i>
-    <button> <i class="fa-regular fa-user"></i> LOGIN</button>
-  </div>
-  <!-- <div class="account">
     @if (!isLoggedIn) {
-    <button (click)="showRegister()">
-      <i class="fa-regular fa-id-card"></i> Create Account
-    </button>
-    <button (click)="signInForm()">
-      <i class="fa-solid fa-person-walking-dashed-line-arrow-right"></i> Sign in
-    </button>
-    } @else  {
-    <button routerLink="/profile" ><img [src]="userImg" alt="">{{userName}}</button>
-    <button (click)="signOut()"><i class="fa-solid fa-right-to-bracket"></i> Sign Out</button>
+      <button (click)="signInForm()"> <i class="fa-regular fa-user"></i> LOGIN</button>
     }
-  </div> -->
+    @else  {
+    <button (click)="isProfileInfoShown = !isProfileInfoShown"><img [src]="tools.userNavbarInfo().avatar" alt="">{{tools.userNavbarInfo().firstName | uppercase }}</button>
+    <button class="signout" (click)="signOut()"><i class="fa-solid fa-right-to-bracket"></i></button>
+    }
+  </div>
+
 </nav>
+@if (isProfileInfoShown) {
+  <app-profile-page></app-profile-page>
+}
+
 <app-nav-searching-panel [searchWord]="searchWord"></app-nav-searching-panel>
 @if (isSignShow) {
 <app-sign-in
