@@ -11,8 +11,14 @@ import { CartAreaService } from '../services/cart-area.service';
 import { ProductsAreaService } from '../services/products-area.service';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import {
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { ToolsService } from '../services/tools.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-profile-page',
@@ -27,6 +33,7 @@ export class ProfilePageComponent implements OnInit {
     private prodServ: ProductsAreaService,
     private renderer: Renderer2,
     protected tools: ToolsService,
+    public _cookie: CookieService,
   ) {}
   ngOnInit(): void {
     this.getProfileData();
@@ -43,11 +50,25 @@ export class ProfilePageComponent implements OnInit {
     gender: new FormControl(''),
   });
 
+  protected passForm: FormGroup = new FormGroup({
+    oldPassword: new FormControl('', [
+      Validators.required,
+      Validators.minLength(8),
+    ]),
+    newPassword: new FormControl('', [
+      Validators.required,
+      Validators.minLength(8),
+    ]),
+  });
+
   public canChangeBio: boolean = false;
+  public isPassFormShown: boolean = false;
   // public cartLength: number = 0;
   // public total: number = 0;
   // public cartSMS: string = '';
   public isProfileInfoShown: boolean = false;
+  public isResponseSMSShown: boolean = false;
+  public responseSMS = signal<string>('');
   @ViewChild('settings') public settings!: ElementRef;
 
   toggleSettings() {
@@ -76,8 +97,6 @@ export class ProfilePageComponent implements OnInit {
           avatar: data.avatar,
           gender: data.gender,
         });
-
-       
       },
     });
   }
@@ -87,8 +106,44 @@ export class ProfilePageComponent implements OnInit {
       next: (data: any) => {
         this.tools.userNavbarInfo.set(data);
         this.canChangeBio = false;
+        this.responseSMS.set('Profile Info Changed successfully');
+        this.isResponseSMSShown = true;
+        setTimeout(() => {
+          this.isPassFormShown = false;
+          this.isResponseSMSShown = false;
+          this.responseSMS.set('');
+        }, 1000);
       },
-      error: () => {},
+      error: (err: any) => {
+        this.responseSMS.set(err.error.error);
+        this.isResponseSMSShown = true;
+        setTimeout(() => {
+          this.isResponseSMSShown = false;
+          this.responseSMS.set('');
+        }, 1000);
+      },
+    });
+  }
+
+  updatePass() {
+    this.api.changePass(this.passForm.value).subscribe({
+      next: (data: any) => {
+        this.responseSMS.set('Password Changed successfully');
+        this._cookie.set('user', data.access_token, 1);
+        this.isResponseSMSShown = true;
+        setTimeout(() => {
+          this.isResponseSMSShown = false;
+          this.responseSMS.set('');
+        }, 1000);
+      },
+      error: (err: any) => {
+        this.responseSMS.set(err.error.error);
+        this.isResponseSMSShown = true;
+        setTimeout(() => {
+          this.isResponseSMSShown = false;
+          this.responseSMS.set('');
+        }, 1000);
+      },
     });
   }
 

@@ -13,4 +13,5 @@ export class ToolsService {
   public isRegistered: BehaviorSubject<boolean> = new BehaviorSubject(false)
   public isCartActive: BehaviorSubject<boolean> = new BehaviorSubject(false)
   public userNavbarInfo = signal<any>({})
+  public cartQuantity = signal<number>(0)
 }

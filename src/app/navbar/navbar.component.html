@@ -1,36 +1,53 @@
 <nav appScrolling>
-  <h1 routerLink="/"> <img src="/logo.jpg" alt=""> Electronics Mall </h1>
+  <h1 routerLink="/"><img src="/logo.jpg" alt="" /> Electronics Mall</h1>
   <div class="search">
     <i class="fa-solid fa-magnifying-glass"></i>
-    <input type="search" placeholder="What are you looking for?" [(ngModel)]="searchWord">
+    <input
+      type="search"
+      placeholder="What are you looking for?"
+      [(ngModel)]="searchWord"
+    />
   </div>
   <div class="user">
-    <i class="fa-solid fa-cart-shopping"></i>
+    <div class="cartIcon">
+      <span> {{ tools.cartQuantity() }} </span>
+      <i
+        (click)="isCartShown = !isCartShown"
+        class="fa-solid fa-cart-shopping"
+      ></i>
+    </div>
     @if (!isLoggedIn) {
-      <button (click)="signInForm()"> <i class="fa-regular fa-user"></i> LOGIN</button>
-    }
-    @else  {
-    <button (click)="isProfileInfoShown = !isProfileInfoShown"><img [src]="tools.userNavbarInfo().avatar" alt="">{{tools.userNavbarInfo().firstName | uppercase }}</button>
-    <button class="signout" (click)="signOut()"><i class="fa-solid fa-right-to-bracket"></i></button>
+      <button (click)="signInForm()">
+        <i class="fa-regular fa-user"></i> LOGIN
+      </button>
+    } @else {
+      <button (click)="isProfileInfoShown = !isProfileInfoShown">
+        <img [src]="tools.userNavbarInfo().avatar" alt="" />{{
+          tools.userNavbarInfo().firstName | uppercase
+        }}
+      </button>
+      <button class="signout" (click)="signOut()">
+        <i class="fa-solid fa-right-to-bracket"></i>
+      </button>
     }
   </div>
-
 </nav>
 @if (isProfileInfoShown) {
   <app-profile-page></app-profile-page>
 }
 
+@if (isCartShown) {
+  <app-cart></app-cart>
+}
+
 <app-nav-searching-panel [searchWord]="searchWord"></app-nav-searching-panel>
 @if (isSignShow) {
-<app-sign-in
-  (closeEmit)="closeForm($event)"
-  (changeEmit)="showRegister()"
-  (loggedEmit)="loggedIn($event)"
- 
-></app-sign-in>
-} @if (isRegisterShow) {
-<app-sign-up
-  (closeEmit)="closeRegister($event)"
- 
-></app-sign-up>
+  <app-sign-in
+    (closeEmit)="closeForm($event)"
+    (changeEmit)="showRegister()"
+    (loggedEmit)="loggedIn($event)"
+  ></app-sign-in>
+}
+@if (isRegisterShow) {
+  <app-sign-up (closeEmit)="closeRegister($event)"></app-sign-up>
 }

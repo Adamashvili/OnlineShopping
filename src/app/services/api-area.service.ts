@@ -25,5 +25,8 @@ export class ApiAreaService {
     return this.http.patch("https://api.everrest.educata.dev/auth/update", body)
   }
 
+  changePass(body: any) {
+    return this.http.patch("https://api.everrest.educata.dev/auth/change_password", body)
+  }
  
 }

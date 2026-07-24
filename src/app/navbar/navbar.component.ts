@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ProfilePageComponent } from '../profile-page/profile-page.component';
 import { ApiAreaService } from '../services/api-area.service';
+import { CartComponent } from "../cart/cart.component";
 
 @Component({
   selector: 'app-navbar',
@@ -23,7 +24,8 @@ import { ApiAreaService } from '../services/api-area.service';
     FormsModule,
     CommonModule,
     ProfilePageComponent,
-  ],
+    CartComponent
+],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css',
 })
@@ -35,7 +37,7 @@ export class NavbarComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.isLoggedIn = this._cookie.get('user') ? true : false;
+    
     this.tools.isSignedIn.subscribe((info: boolean) => {
       this.isSignShow = info;
     });
@@ -48,8 +50,9 @@ export class NavbarComponent implements OnInit {
 
   public isSignShow: boolean = false;
   public isRegisterShow: boolean = false;
-  public isLoggedIn: any;
+  public isLoggedIn: boolean = false;
   public isProfileInfoShown: boolean = false;
+  public isCartShown: boolean = false;
   public userInfoNAV = signal<any>({});
   public user: any;
   public searchWord: string = '';
@@ -60,7 +63,6 @@ export class NavbarComponent implements OnInit {
 
   signOut() {
     this._cookie.deleteAll();
-    sessionStorage.clear();
     this.isLoggedIn = false;
     this.isProfileInfoShown = false
   }
@@ -85,6 +87,7 @@ export class NavbarComponent implements OnInit {
     if (this._cookie.get('user')) {
       this.api.profileInfo().subscribe({
         next: (data: any) => {
+          this.isLoggedIn = true
           this.tools.userNavbarInfo.set(data);
         },
         error: () => {},

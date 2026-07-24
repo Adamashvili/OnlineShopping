@@ -1,0 +1,100 @@
+.cartArea {
+    width: 500px;
+    box-shadow: 0 0 5px rgb(212, 211, 211);
+    position: fixed;
+    right: 13%;
+    top: 65px;
+    z-index: 999999999;
+    background-color: white;
+    border-radius: 25px;
+    padding: 15px;
+}
+
+.card {
+    display: grid;
+    grid-template-columns: 1fr 2.5fr 1.5fr 1fr 0.5fr;
+    background-color: #F9F7FE;
+    margin-top: 5px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px;
+    font-size: 13px;
+    border: 0.4px solid #dfd4fb;
+    border-radius: 7px;
+}
+
+.head {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 0.3px solid rgb(172, 170, 170);
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    align-items: center;
+    position: relative;
+}
+
+.cartArea h3 {
+    font-family: "Slabo 27px", serif !important;
+}
+
+.cartArea h5 {
+    font-weight: 500;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    background-color: #735EA8;
+    color: white;
+    padding: 4px 10px;
+    border-radius: 10px 10px 0 0;
+    font-family: "Gentium Plus", serif;
+    cursor: default;
+}
+
+.card img {
+    width: 100%;
+    padding: 10px;
+}
+
+.card .info p {
+    font-size: 12px;
+    color: #735EA8;
+}
+
+.quantity {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.quantity i {
+    background-color: white;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.quantity i:hover {
+    background-color: #a585f7;
+    
+}
+
+.card .fa-x {
+    background-color: #735EA8;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.card .fa-x:hover {
+    background-color: darkred;
+}

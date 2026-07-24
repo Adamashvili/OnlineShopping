@@ -1,1 +1,22 @@
-<p>cart works!</p>
+<div class="cartArea">
+  <div class="head">
+    <h3>Your Cart</h3>
+    <h5> {{totalPrice() | currency}} </h5>
+  </div>
+  @for (item of cartArray(); track $index) {
+  <div class="card">
+    <img [src]="item.thumbnail" alt="" />
+    <div class="info">
+      <h4> {{item.title}} </h4>
+      <p> {{item.price.current | currency}} </p>
+    </div>
+    <div class="quantity">
+      <i class="fa-solid fa-angle-up"></i>
+      <p> {{item.quantity}} </p>
+      <i class="fa-solid fa-angle-down"></i>
+    </div>
+    <p>3500$</p>
+    <i class="fa-solid fa-x"></i>
+  </div>
+}
+</div>

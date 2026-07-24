@@ -103,3 +103,53 @@ li input:read-only {
   cursor: default;
 }
 
+.passChangeForm {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding:0;
+  height: 0;
+  overflow: hidden;
+  transition: 0.4s;
+}
+
+.passFShown {
+  padding:10px 0;
+  height: auto;
+  
+}
+
+.passChangeForm input {
+  border: 0.3px solid rgb(198, 198, 198);
+  height: 35px;
+  border-radius: 7px;
+  padding: 5px;
+  box-shadow: 0 0 3px 1px rgb(236, 235, 235) inset;
+}
+
+.passChangeForm button {
+  align-self: flex-end;
+  padding: 8px 10px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: #735EA8;
+  color: white;
+}
+
+.passChangeForm button:disabled {
+  background-color: black;
+}
+
+
+.reqSms {
+  font-size: 12px;
+  background-color: #735EA8;
+  color: white;
+  margin: 10px 0;
+  padding: 7px;
+  text-align: center;
+  border-radius: 3px;
+}
+
+
