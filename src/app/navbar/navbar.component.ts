@@ -12,6 +12,7 @@ import { ProfilePageComponent } from '../profile-page/profile-page.component';
 import { ApiAreaService } from '../services/api-area.service';
 import { CartComponent } from "../cart/cart.component";
 import { CartAreaService } from '../services/cart-area.service';
+import { SpinnerComponent } from "../spinner/spinner.component";
 
 @Component({
   selector: 'app-navbar',
@@ -25,7 +26,8 @@ import { CartAreaService } from '../services/cart-area.service';
     FormsModule,
     CommonModule,
     ProfilePageComponent,
-    CartComponent
+    CartComponent,
+    SpinnerComponent
 ],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css',
@@ -72,7 +74,8 @@ export class NavbarComponent implements OnInit {
           this.isLoggedIn = true
           this.tools.userNavbarInfo.set(data);
         },
-        error: (err:any) => alert(err.error),
+        error: (err:any) => console.log(err)
+        ,
       });
       
     }

@@ -1,21 +1,32 @@
 <section [class.showSection]="isSectionShown">
   <div class="searchCard">
     <h4>Searched Products</h4>
-    @for (item of searchedList(); track $index) {
-      <div class="card" routerLink="/details/{{item._id}}" (click)="isSectionShown = false">
-        <i class="fa-solid fa-angle-right"></i>
-        <img
-          [src]="item.thumbnail"
-          (error)="item.thumbnail = '/nophoto.jpg'"
-          alt="product"
-        />
-        <div class="desc">
-          <h5> {{item.title}} </h5>
-          <h3>{{ item.price.current | currency }}
-            @if(item.price.current < item.price.beforeDiscount) {<span>{{ item.price.beforeDiscount | currency }}</span>}
-          </h3>
+    @if (tools.loader()) {
+      <app-spinner></app-spinner>
+    } @else {
+      @for (item of searchedList(); track $index) {
+        <div
+          class="card"
+          routerLink="/details/{{ item._id }}"
+          (click)="isSectionShown = false"
+        >
+          <i class="fa-solid fa-angle-right"></i>
+          <img
+            [src]="item.thumbnail"
+            (error)="item.thumbnail = '/nophoto.jpg'"
+            alt="product"
+          />
+          <div class="desc">
+            <h5>{{ item.title }}</h5>
+            <h3>
+              {{ item.price.current | currency }}
+              @if (item.price.current < item.price.beforeDiscount) {
+                <span>{{ item.price.beforeDiscount | currency }}</span>
+              }
+            </h3>
+          </div>
         </div>
-      </div>
+      }
     }
   </div>
 </section>

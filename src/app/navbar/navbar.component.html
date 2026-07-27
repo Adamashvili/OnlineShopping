@@ -1,7 +1,7 @@
 <nav appScrolling>
-  <h1 routerLink="/"><img src="/logo.jpg" alt="" /> Electronics Mall</h1>
-  <div class="search">
-    <i class="fa-solid fa-magnifying-glass"></i>
+  <h1 routerLink="/"><img src="/logo.jpg" alt="" /> Electronics Mall  </h1>
+  <div #search class="search">
+    <i (click)="search.classList.toggle('mini')" class="fa-solid fa-magnifying-glass"></i>
     <input
       type="search"
       placeholder="What are you looking for?"

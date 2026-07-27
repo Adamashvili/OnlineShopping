@@ -17,10 +17,11 @@ import { ToolsService } from '../../services/tools.service';
 import { ApiAreaService } from '../../services/api-area.service';
 import { CartAreaService } from '../../services/cart-area.service';
 import { CookieService } from 'ngx-cookie-service';
+import { SpinnerComponent } from "../../spinner/spinner.component";
 
 @Component({
   selector: 'app-details',
-  imports: [CommonModule, SignErrComponent, RouterLink],
+  imports: [CommonModule, SignErrComponent, RouterLink, SpinnerComponent],
   templateUrl: './details.component.html',
   styleUrl: './details.component.css',
 })

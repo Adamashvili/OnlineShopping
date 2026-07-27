@@ -1,60 +1,4 @@
-<!-- <div class="area">
-    <div  class="categories">
-        @for (item of categories; track $index) {
-        <button>
-          <img [src]="item.image" alt="" />
-          <h4 >{{ item.name }}</h4>
-        </button>
-        }
-      </div>
 
-  <div class="brands">
-    <h1>Brands</h1>
-    <ul>
-      <li [class.activedBrand]="activeBrand == ''" (click)="showAll()"><i class="fa-solid fa-tag"></i>All</li>
-      @for (item of brands; track $index) {
-      <li [class.activedBrand]="item == activeBrand" (click)="getBrandData(item)">
-        <i class="fa-solid fa-tag"></i>{{ item }}
-      </li>
-      }
-    </ul>
-  </div>
-  <div class="search">
-    <span class="material-symbols-outlined"> manage_search </span>
-    <input
-      (keyup.enter)="searchData()"
-      type="search"
-      placeholder="Search here..."
-      [(ngModel)]="searchText"
-    />
-  </div>
-  <div class="prices">
-    <h4>Select price:</h4>
-    <input type="text" placeholder="from" [(ngModel)]="minPrice" />
-
-    <input type="text" placeholder="to" [(ngModel)]="maxPrice" />
-  </div>
-  <div class="rating">
-    <h4>rating:</h4>
-    <input type="number" placeholder="0" max="5" min="0" [(ngModel)]="rating"/>
-  </div>
-  <div class="sort">
-   
-    <select [(ngModel)]="type">
-      <option value="">Choose Type</option>
-      <option value="rating">Rating</option>
-      <option value="price">Price</option>
-      <option value="issue_date">Issue Date</option>
-      <option value="title">Title</option>
-    </select>
-    <select [(ngModel)]="sort">
-      <option value="">Sort Direction</option>
-      <option value="asc">Ascendes</option>
-      <option value="desc">Descendes</option>
-    </select>
-  </div>
-  <button (click)="filterData()">Filter</button>
-</div> -->
 <aside>
   <article class="categories">
     <h3 (click)="categoriesUl.classList.toggle('toggleBrands')">
@@ -89,10 +33,10 @@
       ></i>
     </h3>
     <ul #brandsUl>
-      <li [class.activedBrand]="activeBrand == ''" (click)="showAll()">All</li>
+      <li [class.activeLI]="activeBrand == ''" (click)="showAll()">All</li>
       @for (item of brands; track $index) {
         <li
-          [class.activedBrand]="item == activeBrand"
+          [class.activeLI]="item == activeBrand"
           (click)="getBrandData(item)"
         >
           {{ item }}

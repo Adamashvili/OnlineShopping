@@ -35,10 +35,12 @@ nav h1 img {
 }
 nav .search {
   position: relative;
+  width: 350px ;
+  transition: 1s;
 }
 
 nav input {
-  width: 350px;
+  width: 100%;
   height: 35px;
   border: none;
   outline: none;
@@ -152,8 +154,33 @@ nav .user .fa-cart-shopping {
 }
 
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 850px) {
   nav h1 {
-    font-size: 25px;
+    font-size: 20px;
+  }
+
+  nav .search {
+    width: auto;
+  }
+}
+@media screen and (max-width: 600px) {
+  nav {
+    padding: 5px;
+  }
+  nav h1 {
+    font-size: 10px;
+  }
+
+  nav .search {
+    width: 40px;
+  }
+
+  .mini {
+    position: fixed !important;
+    width: 100% !important;
+    padding-inline: 10px;
+    z-index: 9999;
+    left: 0;
+    transition: 1s;
   }
 }

@@ -21,7 +21,8 @@ section {
 
 .searchCard {
     width: 600px;
-    height: 400px;
+    min-height: 100px !important;
+    max-height: 400px;
     background-color: white;
     margin-top: 20px;
     border-radius: 30px;

@@ -198,8 +198,7 @@ section main {
 
   article .sidebar {
     position: static;
-    width: 100%;
-    display: flex;
+    width: 100% !important;
     height: auto;
   }
 

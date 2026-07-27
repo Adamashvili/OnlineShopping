@@ -101,6 +101,13 @@ header .right {
   gap: 5px;
 }
 
+.details h3 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 40px;
+}
+
 .details .info {
   border: 1px solid #ece4f8;
   border-radius: 20px;
@@ -285,3 +292,9 @@ header .right {
 }
 
 
+@media (max-width: 850px) {
+  .full-description {
+    grid-template-columns: 1fr;
+    margin: 30px;
+  }
+}

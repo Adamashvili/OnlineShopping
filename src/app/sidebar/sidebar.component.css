@@ -52,6 +52,12 @@ li {
   display: flex;
   align-items: center;
   gap: 10px;
+  transition: 0.4s;
+}
+
+.activeLI {
+  box-shadow: inset 0 0 4px -1px #8f60f6;
+  color: #7f56d9;
 }
 
 aside > input {
@@ -182,4 +188,12 @@ aside button {
   border-radius: 10px;
   cursor: pointer;
   text-shadow: 0 0 1px white;
+}
+
+
+@media (max-width: 768px) {
+
+  aside {
+    width: 100% !important;
+  }
 }

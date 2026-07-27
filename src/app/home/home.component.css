@@ -170,3 +170,11 @@ main > h1 {
     color: #7419f3;
     text-shadow: 0 0 1px #0a1f1f7b;
 }
+
+
+@media (max-width: 850px) {
+  .categories {
+    grid-template-columns: 1fr;
+    margin: 30px;
+  }
+}

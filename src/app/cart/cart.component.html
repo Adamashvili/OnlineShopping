@@ -1,30 +1,46 @@
 <div class="cartArea">
   <div class="head">
     <h3>Your Cart</h3>
-   @if (totalPrice() > 0) { <h5> {{totalPrice() | currency}} </h5>}
+    @if (totalPrice() > 0) {
+      <h5>{{ totalPrice() | currency }}</h5>
+    }
   </div>
+  @if (tools.loader()) {
+    <app-spinner></app-spinner>
+  }
+  @else {
   @for (item of cartArray(); track $index) {
-  <div class="card">
-    <img [src]="item.thumbnail" alt="" />
-    <div class="info">
-      <h4> {{item.title}} </h4>
-      <p> {{item.price.current | currency}} </p>
+    <div class="card">
+      <img [src]="item.thumbnail" alt="" />
+      <div class="info">
+        <h4>{{ item.title }}</h4>
+        <p>{{ item.price.current | currency }}</p>
+      </div>
+      <div class="quantity">
+        <i
+          [style.visibility]="item.stock > item.quantity ? 'visible' : 'hidden'"
+          (click)="updateCart(item._id, '+', item.quantity)"
+          class="fa-solid fa-angle-up"
+        ></i>
+        <p>{{ item.quantity }}</p>
+        <i
+          [style.visibility]="item.quantity > 1 ? 'visible' : 'hidden'"
+          (click)="updateCart(item._id, '-', item.quantity)"
+          class="fa-solid fa-angle-down"
+        ></i>
+      </div>
+      <p>{{ item.price.current * item.quantity | currency }}</p>
+      <i (click)="removeItem(item._id)" class="fa-solid fa-x"></i>
     </div>
-    <div class="quantity">
-      <i [style.visibility]="(item.stock > item.quantity) ? 'visible' : 'hidden' " (click)="updateCart(item._id, '+', item.quantity)" class="fa-solid fa-angle-up"></i>
-      <p> {{item.quantity}} </p>
-      <i [style.visibility]="(item.quantity > 1) ? 'visible' : 'hidden' " (click)="updateCart(item._id, '-', item.quantity)" class="fa-solid fa-angle-down"></i>
-    </div>
-    <p>{{(item.price.current * item.quantity) | currency}}</p>
-    <i (click)="removeItem(item._id)" class="fa-solid fa-x"></i>
-  </div>
-}
 
-@empty {
-  <div class="emptyCard">
-    <img src="/nocart.png" alt="">
-    <h4>Your cart is empty</h4>
-    <p>Your selected products will appear here after you add them to your cart.</p>
-  </div>
+  } @empty {
+    <div class="emptyCard">
+      <img src="/nocart.png" alt="" />
+      <h4>Your cart is empty</h4>
+      <p>
+        Your selected products will appear here after you add them to your cart.
+      </p>
+    </div>
+  }
 }
 </div>

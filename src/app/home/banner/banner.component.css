@@ -77,7 +77,7 @@
 
 
 .photo {
-    background-color: red;
+
     display: flex;
     align-items: center;
     justify-content: center;
@@ -99,4 +99,39 @@
     height: 100%;
     background-color: white;
     transform: skew(-10deg) scale(1.2);
+}
+
+
+@media (max-width: 900px) {
+    .container {
+        grid-template-columns:  1fr;
+        margin: 70px 20px;
+    }
+
+    .container .infos {
+        padding: 5px;
+        height: 400px;
+    }
+
+    .photo::after {
+        display: none;
+    }
+}
+@media (max-width: 600px) {
+    .container {
+        grid-template-columns:  1fr;
+        margin: 70px 20px;
+    }
+
+    .container .infos h1 {
+        font-size: 20px;
+    }
+
+    .container .infos {
+        padding: 5px;
+        height: 400px;
+        font-size: 10px;
+    }
+
+    
 }

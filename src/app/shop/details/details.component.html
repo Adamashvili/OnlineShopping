@@ -46,7 +46,9 @@
       </div>
 
       <div class="details">
-        <h3>{{ prodINFO().title }}</h3>
+        <h3>{{ prodINFO().title }}  @if (tools.loader()) {
+      <app-spinner></app-spinner>
+    }</h3>
         <div class="info">
           <div class="top">
             <div class="property">
@@ -75,6 +77,7 @@
                     <span>{{ prodINFO().price?.beforeDiscount | currency }}</span>
                   }
                 </h2>
+                
                 @if (prodINFO().price.current < prodINFO().price.beforeDiscount) {
                   <p>
                     Purchase with
@@ -115,7 +118,7 @@
             @for (item of [].constructor(5); track $index) {
               <i
                 #rateStar
-                (click)="rateNum = $index + 1;"
+                (click)="rateNum = $index + 1"
                 (mouseenter)="chooseRate($index + 1)"
                 (mouseleave)="resetStars()"
                 [id]="$index + 1"

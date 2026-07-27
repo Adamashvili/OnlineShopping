@@ -4,10 +4,11 @@ import { CartAreaService } from '../services/cart-area.service';
 import { ProductsAreaService } from '../services/products-area.service';
 import { CommonModule } from '@angular/common';
 import { ToolsService } from '../services/tools.service';
+import { SpinnerComponent } from "../spinner/spinner.component";
 
 @Component({
     selector: 'app-cart',
-    imports: [CommonModule],
+    imports: [CommonModule, SpinnerComponent],
     templateUrl: './cart.component.html',
     styleUrl: './cart.component.css'
 })
