@@ -68,4 +68,8 @@ export class ProductsAreaService {
       `https://api.everrest.educata.dev/shop/products/id/${id}`,
     );
   }
+
+  rate(info: any) {
+    return this.http.post("https://api.everrest.educata.dev/shop/products/rate", info)
+  }
 }

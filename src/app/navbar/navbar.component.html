@@ -9,6 +9,7 @@
     />
   </div>
   <div class="user">
+    @if (_cookie.get("user")) {
     <div class="cartIcon">
       <span> {{ tools.cartQuantity() }} </span>
       <i
@@ -16,8 +17,9 @@
         class="fa-solid fa-cart-shopping"
       ></i>
     </div>
+    }
     @if (!isLoggedIn) {
-      <button (click)="signInForm()">
+      <button (click)="tools.isSignedIn.next(true)">
         <i class="fa-regular fa-user"></i> LOGIN
       </button>
     } @else {
@@ -43,11 +45,11 @@
 <app-nav-searching-panel [searchWord]="searchWord"></app-nav-searching-panel>
 @if (isSignShow) {
   <app-sign-in
-    (closeEmit)="closeForm($event)"
+    (closeEmit)="isSignShow = $event"
     (changeEmit)="showRegister()"
-    (loggedEmit)="loggedIn($event)"
+    (loggedEmit)="isLoggedIn = $event "
   ></app-sign-in>
 }
 @if (isRegisterShow) {
-  <app-sign-up (closeEmit)="closeRegister($event)"></app-sign-up>
+  <app-sign-up (closeEmit)="isRegisterShow = $event "></app-sign-up>
 }

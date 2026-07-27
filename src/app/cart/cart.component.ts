@@ -13,7 +13,7 @@ import { ToolsService } from '../services/tools.service';
 })
 export class CartComponent{
   constructor(private api: CartAreaService, protected prodServ: ProductsAreaService, protected tools: ToolsService) {
-    this.getCart()
+     this.getCart()
   }
   
   protected cartArray = signal<any[]>([])
@@ -48,6 +48,22 @@ export class CartComponent{
         
       },
     } )
+  }
+
+  updateCart(id: string, action: string, prodQuantity: number) {
+    action == "+" ? prodQuantity++ : prodQuantity--
+
+    const prodInfoCart = {
+          id: id,
+          quantity: prodQuantity
+        };
+
+        this.api.addtoCart(prodInfoCart).subscribe( (data:any) => this.getCart() )
+        
+  }
+
+  removeItem(id: string) {
+    this.api.deleteProduct({id: id}).subscribe(() => this.getCart())
   }
 
 }

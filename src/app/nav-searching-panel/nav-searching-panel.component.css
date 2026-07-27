@@ -91,10 +91,11 @@ section {
 
 .desc h3 {
     color: #6031c5;
+    font-size: 15px;
 }
 
 .desc h3 span {
     color:  rgb(75, 74, 74);
-    font-size: 13px;
+    font-size: 11px;
     text-decoration: line-through;
 }

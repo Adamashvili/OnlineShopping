@@ -12,13 +12,13 @@
 
 .card {
     display: grid;
-    grid-template-columns: 1fr 2.5fr 1.5fr 1fr 0.5fr;
+    grid-template-columns: 1fr 3fr 1fr 1fr 0.5fr;
     background-color: #F9F7FE;
     margin-top: 5px;
     align-items: center;
     justify-content: space-between;
-    padding: 0 10px;
-    font-size: 13px;
+    padding: 5px 10px;
+    font-size: 11px;
     border: 0.4px solid #dfd4fb;
     border-radius: 7px;
 }
@@ -55,6 +55,10 @@
     padding: 10px;
 }
 
+.info h4 {
+    font-size: 12px;
+}
+
 .card .info p {
     font-size: 12px;
     color: #735EA8;
@@ -62,8 +66,9 @@
 
 .quantity {
     display: flex;
-    gap: 10px;
+    gap: 5px;
     align-items: center;
+    flex-direction: column;
 }
 
 .quantity i {
@@ -97,4 +102,29 @@
 
 .card .fa-x:hover {
     background-color: darkred;
+}
+
+
+.emptyCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 20px 10px;
+    text-align: center;
+}
+
+
+.emptyCard img {
+    width: 100px;
+}
+
+.emptyCard h4 {
+    color: #735EA8;
+}
+
+.emptyCard p {
+    font-family: "Gentium Plus", serif;
+    font-size: 14px;
+    font-weight: 600;
 }

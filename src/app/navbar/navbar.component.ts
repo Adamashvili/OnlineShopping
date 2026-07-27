@@ -1,4 +1,4 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { AfterContentChecked, Component, OnInit, signal } from '@angular/core';
 import { SignInComponent } from '../sign-in/sign-in.component';
 import { SignUpComponent } from '../sign-up/sign-up.component';
 import { ScrollingDirective } from '../../directives/scrolling.directive';
@@ -11,6 +11,7 @@ import { CommonModule } from '@angular/common';
 import { ProfilePageComponent } from '../profile-page/profile-page.component';
 import { ApiAreaService } from '../services/api-area.service';
 import { CartComponent } from "../cart/cart.component";
+import { CartAreaService } from '../services/cart-area.service';
 
 @Component({
   selector: 'app-navbar',
@@ -31,21 +32,18 @@ import { CartComponent } from "../cart/cart.component";
 })
 export class NavbarComponent implements OnInit {
   constructor(
-    private _cookie: CookieService,
+    protected _cookie: CookieService,
     protected tools: ToolsService,
     private api: ApiAreaService,
+    protected cartServ: CartAreaService
   ) {}
 
-  ngOnInit(): void {
-    
-    this.tools.isSignedIn.subscribe((info: boolean) => {
-      this.isSignShow = info;
-    });
-    this.tools.isRegistered.subscribe((info: boolean) => {
-      this.isRegisterShow = info;
-    });
 
+  ngOnInit(): void {
+    this.tools.isSignedIn.subscribe((info: boolean) => this.isSignShow = info);
+    this.tools.isRegistered.subscribe((info: boolean) => this.isRegisterShow = info);
     this.profileInfoNav();
+    this.cartServ.getCart().subscribe( (cartData:any) => this.tools.cartQuantity.set(cartData.products.length))
   }
 
   public isSignShow: boolean = false;
@@ -54,12 +52,7 @@ export class NavbarComponent implements OnInit {
   public isProfileInfoShown: boolean = false;
   public isCartShown: boolean = false;
   public userInfoNAV = signal<any>({});
-  public user: any;
   public searchWord: string = '';
-
-  signInForm() {
-    this.tools.isSignedIn.next(true);
-  }
 
   signOut() {
     this._cookie.deleteAll();
@@ -71,17 +64,6 @@ export class NavbarComponent implements OnInit {
     this.tools.isRegistered.next(true);
   }
 
-  closeForm(close: boolean) {
-    this.isSignShow = close;
-  }
-
-  closeRegister(close: boolean) {
-    this.isRegisterShow = close;
-  }
-
-  loggedIn(logg: boolean) {
-    this.isLoggedIn = logg;
-  }
 
   profileInfoNav() {
     if (this._cookie.get('user')) {
@@ -90,8 +72,9 @@ export class NavbarComponent implements OnInit {
           this.isLoggedIn = true
           this.tools.userNavbarInfo.set(data);
         },
-        error: () => {},
+        error: (err:any) => alert(err.error),
       });
+      
     }
   }
 }

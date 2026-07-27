@@ -1,5 +1,5 @@
 <main>
-  @if (prodINFO) {
+  @if (prodINFO().title) {
     <header>
       <h5><i class="fa-solid fa-phone"></i> *3333 / (0322) 255-55-55</h5>
       <div class="right">
@@ -14,9 +14,9 @@
         <i class="fa-solid fa-angle-right"></i>
         <p routerLink="/shop">Computer Techics and Accessories</p>
         <i class="fa-solid fa-angle-right"></i>
-        <p>{{ prodINFO.category.name }}</p>
+        <p>{{ prodINFO().category?.name }}</p>
       </div>
-      <p>code: {{ prodINFO._id }}</p>
+      <p>code: {{ prodINFO()._id }}</p>
     </div>
     <section class="full-description">
       <div class="left">
@@ -41,12 +41,12 @@
         </div>
         <div class="aboutProduct">
           <h4>Product Description</h4>
-          <p>{{ prodINFO.description }}</p>
+          <p>{{ prodINFO().description }}</p>
         </div>
       </div>
 
       <div class="details">
-        <h3>{{ prodINFO.title }}</h3>
+        <h3>{{ prodINFO().title }}</h3>
         <div class="info">
           <div class="top">
             <div class="property">
@@ -57,32 +57,34 @@
               <p>warrany</p>
             </div>
             <div class="prodValue">
-              <h4 [style.color]="prodINFO.stock <= 0 ? 'red' : ''">
-                {{ prodINFO.stock }}
+              <h4 [style.color]="prodINFO().stock <= 0 ? 'red' : ''">
+                {{ prodINFO().stock }}
               </h4>
-              <h4>{{ prodINFO.brand }}</h4>
-              <h4>{{ prodINFO.issueDate | date }}</h4>
-              <h4>{{ prodINFO.rating }}</h4>
-              <h4>{{ prodINFO.warranty }} years</h4>
+              <h4>{{ prodINFO().brand }}</h4>
+              <h4>{{ prodINFO().issueDate | date }}</h4>
+              <h4>{{ prodINFO().rating }}</h4>
+              <h4>{{ prodINFO().warranty }} years</h4>
             </div>
           </div>
           <div class="bottom">
             <div class="up">
               <div class="prices">
                 <h2>
-                  {{ prodINFO.price.current | currency }}
-                  @if (prodINFO.price.current < prodINFO.price.beforeDiscount) {
-                    <span>{{ prodINFO.price.beforeDiscount | currency }}</span>
+                  {{ prodINFO().price?.current | currency }}
+                  @if (prodINFO().price?.current < prodINFO().price.beforeDiscount) {
+                    <span>{{ prodINFO().price?.beforeDiscount | currency }}</span>
                   }
                 </h2>
-                <p>
-                  Purchase with
-                  <span> {{ prodINFO.price.discountPercentage }}% </span> Sale
-                </p>
+                @if (prodINFO().price.current < prodINFO().price.beforeDiscount) {
+                  <p>
+                    Purchase with
+                    <span> {{ prodINFO().price.discountPercentage }}% </span> Sale
+                  </p>
+                }
               </div>
               <div class="quantity">
                 <button
-                  [disabled]="prodQuant >= prodINFO.stock"
+                  [disabled]="prodQuant >= prodINFO().stock"
                   (click)="updateQuantity('+')"
                 >
                   +
@@ -98,8 +100,8 @@
             </div>
             <div class="down">
               <button
-                (click)="cartBTN(prodINFO._id)"
-                [disabled]="prodINFO.stock <= 0"
+                (click)="cartBTN(prodINFO()._id)"
+                [disabled]="prodINFO().stock <= 0"
               >
                 <i class="fa-solid fa-cart-shopping"></i> Add To Cart
               </button>
@@ -110,44 +112,19 @@
         <div class="rateCard {{ isRateCardShown ? 'showRateCard' : '' }}">
           <h4>How do you like this Product?</h4>
           <div class="stars">
-            <i
-              #rateStar
-              (mouseenter)="chooseRate(1)"
-              (mouseleave)="resetStars()"
-              id="1"
-              class="fa-solid fa-star"
-            ></i>
-            <i
-              #rateStar
-              (mouseenter)="chooseRate(2)"
-              (mouseleave)="resetStars()"
-              id="2"
-              class="fa-solid fa-star"
-            ></i>
-            <i
-              #rateStar
-              (mouseenter)="chooseRate(3)"
-              (mouseleave)="resetStars()"
-              id="3"
-              class="fa-solid fa-star"
-            ></i>
-            <i
-              #rateStar
-              (mouseenter)="chooseRate(4)"
-              (mouseleave)="resetStars()"
-              id="4"
-              class="fa-solid fa-star"
-            ></i>
-            <i
-              #rateStar
-              (mouseenter)="chooseRate(5)"
-              (mouseleave)="resetStars()"
-              id="5"
-              class="fa-solid fa-star"
-            ></i>
+            @for (item of [].constructor(5); track $index) {
+              <i
+                #rateStar
+                (click)="rateNum = $index + 1;"
+                (mouseenter)="chooseRate($index + 1)"
+                (mouseleave)="resetStars()"
+                [id]="$index + 1"
+                class="fa-solid fa-star"
+              ></i>
+            }
           </div>
           <div class="down">
-            <button><i class="fa-regular fa-star"></i> Rate</button>
+            <button (click)="enterRate()"><i class="fa-regular fa-star"></i> Rate</button>
             <button (click)="isRateCardShown = false">Close</button>
           </div>
         </div>

@@ -164,9 +164,10 @@ header .right {
 
 .bottom {
   background-color: #f6f5fc;
-  padding: 25px;
+  padding: 15px 25px;
   border-radius: 20px;
   border-top: 1px solid #ece4f8;
+  position: relative;
 }
 
 .down {
@@ -219,6 +220,7 @@ header .right {
   transform: scale(1.02);
   box-shadow: 2px 2px 5px -1px #7f12cd;
 }
+
 
 
 .aboutProduct {
