@@ -9,7 +9,7 @@ import {
 import { ApiAreaService } from '../services/api-area.service';
 import { CartAreaService } from '../services/cart-area.service';
 import { ProductsAreaService } from '../services/products-area.service';
-import { CommonModule } from '@angular/common';
+
 import { RouterModule } from '@angular/router';
 import {
   FormControl,
@@ -22,7 +22,7 @@ import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-profile-page',
-  imports: [CommonModule, RouterModule, ReactiveFormsModule],
+  imports: [RouterModule, ReactiveFormsModule],
   templateUrl: './profile-page.component.html',
   styleUrl: './profile-page.component.css',
 })
