@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output, ChangeDetectionStrategy } from '@angular/core';
 import {
   FormControl,
   FormGroup,
@@ -11,6 +11,7 @@ import { ApiAreaService } from '../services/api-area.service';
   selector: 'app-sign-up',
   imports: [ReactiveFormsModule],
   templateUrl: './sign-up.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './sign-up.component.css',
 })
 export class SignUpComponent {

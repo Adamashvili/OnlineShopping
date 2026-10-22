@@ -1,4 +1,4 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import { SignInComponent } from "../sign-in/sign-in.component";
 import { SidebarComponent } from "../sidebar/sidebar.component";
 import { ApiAreaService } from '../services/api-area.service';
@@ -13,6 +13,7 @@ import { RouterLink } from "@angular/router";
     selector: 'app-home',
     imports: [BannerComponent, SeveralProductsComponent, RouterLink],
     templateUrl: './home.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './home.component.css'
 })
 export class HomeComponent  {

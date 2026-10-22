@@ -1,4 +1,4 @@
-import { AfterContentChecked, Component, OnInit, signal } from '@angular/core';
+import { AfterContentChecked, Component, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import { SignInComponent } from '../sign-in/sign-in.component';
 import { SignUpComponent } from '../sign-up/sign-up.component';
 import { ScrollingDirective } from '../../directives/scrolling.directive';
@@ -27,9 +27,10 @@ import { SpinnerComponent } from "../spinner/spinner.component";
     CommonModule,
     ProfilePageComponent,
     CartComponent,
-    SpinnerComponent
+
 ],
   templateUrl: './navbar.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './navbar.component.css',
 })
 export class NavbarComponent implements OnInit {

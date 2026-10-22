@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ProductsAreaService } from '../../services/products-area.service';
 import { CommonModule } from '@angular/common';
@@ -7,6 +7,7 @@ import { CommonModule } from '@angular/common';
   selector: 'app-banner',
   imports: [RouterModule, CommonModule],
   templateUrl: './banner.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './banner.component.css'
 })
 export class BannerComponent {

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output, ChangeDetectionStrategy } from '@angular/core';
 import {
   FormControl,
   FormGroup,
@@ -13,6 +13,7 @@ import { CookieService } from 'ngx-cookie-service';
   selector: 'app-sign-in',
   imports: [ReactiveFormsModule],
   templateUrl: './sign-in.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './sign-in.component.css',
 })
 export class SignInComponent {

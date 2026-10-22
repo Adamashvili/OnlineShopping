@@ -72,9 +72,9 @@
             <div class="up">
               <div class="prices">
                 <h2>
-                  {{ prodINFO().price?.current | currency }}
+                  {{ $safeNavigationMigration(prodINFO().price?.current) | currency }}
                   @if (prodINFO().price?.current < prodINFO().price.beforeDiscount) {
-                    <span>{{ prodINFO().price?.beforeDiscount | currency }}</span>
+                    <span>{{ $safeNavigationMigration(prodINFO().price?.beforeDiscount) | currency }}</span>
                   }
                 </h2>
                 

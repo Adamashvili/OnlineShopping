@@ -6,6 +6,7 @@ import {
   signal,
   SimpleChanges,
   ViewChild,
+  ChangeDetectionStrategy
 } from '@angular/core';
 import { ProductsAreaService } from '../services/products-area.service';
 import { CommonModule } from '@angular/common';
@@ -17,6 +18,7 @@ import { ToolsService } from '../services/tools.service';
   selector: 'app-nav-searching-panel',
   imports: [CommonModule, RouterLink, SpinnerComponent],
   templateUrl: './nav-searching-panel.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './nav-searching-panel.component.css',
 })
 export class NavSearchingPanelComponent implements OnChanges {

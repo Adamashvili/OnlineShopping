@@ -5,6 +5,7 @@ import {
   Renderer2,
   signal,
   ViewChild,
+  ChangeDetectionStrategy
 } from '@angular/core';
 import { ApiAreaService } from '../services/api-area.service';
 import { CartAreaService } from '../services/cart-area.service';
@@ -24,6 +25,7 @@ import { CookieService } from 'ngx-cookie-service';
   selector: 'app-profile-page',
   imports: [RouterModule, ReactiveFormsModule],
   templateUrl: './profile-page.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './profile-page.component.css',
 })
 export class ProfilePageComponent implements OnInit {

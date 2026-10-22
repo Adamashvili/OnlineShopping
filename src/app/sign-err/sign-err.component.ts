@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ToolsService } from '../services/tools.service';
 
 @Component({
   selector: 'app-sign-err',
   imports: [],
   templateUrl: './sign-err.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './sign-err.component.css'
 })
 export class SignErrComponent implements OnInit {

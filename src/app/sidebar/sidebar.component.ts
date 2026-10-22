@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { ProductsAreaService } from '../services/products-area.service';
 import { AllProductArea } from '../../interfaces/all-product-area';
 import { FormsModule } from '@angular/forms';
@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
   selector: 'app-sidebar',
   imports: [FormsModule],
   templateUrl: './sidebar.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './sidebar.component.css',
 })
 export class SidebarComponent implements OnInit {

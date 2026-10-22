@@ -7,6 +7,7 @@ import {
   signal,
   ViewChild,
   ViewChildren,
+  ChangeDetectionStrategy
 } from '@angular/core';
 import { ActivatedRoute, Params, Router, RouterLink } from '@angular/router';
 import { ProductsAreaService } from '../../services/products-area.service';
@@ -23,6 +24,7 @@ import { SpinnerComponent } from "../../spinner/spinner.component";
   selector: 'app-details',
   imports: [CommonModule, SignErrComponent, RouterLink, SpinnerComponent],
   templateUrl: './details.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './details.component.css',
 })
 export class DetailsComponent implements OnInit {

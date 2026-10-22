@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ApiAreaService } from '../../services/api-area.service';
 import { Product } from '../../../interfaces/product';
 import { AllProductArea } from '../../../interfaces/all-product-area';
@@ -10,6 +10,7 @@ import { CommonModule } from '@angular/common';
   selector: 'app-several-products',
   imports: [RouterModule, CommonModule],
   templateUrl: './several-products.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './several-products.component.css',
 })
 export class SeveralProductsComponent implements OnInit {

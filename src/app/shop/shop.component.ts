@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { SidebarComponent } from '../sidebar/sidebar.component';
 import { ProductsAreaService } from '../services/products-area.service';
 import { FormsModule } from '@angular/forms';
@@ -12,6 +12,7 @@ import { CommonModule } from '@angular/common';
   selector: 'app-shop',
   imports: [SidebarComponent, FormsModule, RouterModule, CommonModule],
   templateUrl: './shop.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './shop.component.css',
 })
 export class ShopComponent implements OnInit {

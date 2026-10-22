@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 
 import { CartAreaService } from '../services/cart-area.service';
 import { ProductsAreaService } from '../services/products-area.service';
@@ -10,6 +10,7 @@ import { SpinnerComponent } from "../spinner/spinner.component";
     selector: 'app-cart',
     imports: [CommonModule, SpinnerComponent],
     templateUrl: './cart.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './cart.component.css'
 })
 export class CartComponent{

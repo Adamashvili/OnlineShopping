@@ -4,12 +4,12 @@
     <div class="infos">
       <h2>Best Offer</h2>
       <h1> {{randomProduct()?.title}} </h1>
-      <h4>For only  {{randomProduct().price?.current | currency}} </h4>
+      <h4>For only  {{$safeNavigationMigration(randomProduct().price?.current) | currency}} </h4>
       <p> {{randomProduct()?.description}} </p>
       <button routerLink="/details/{{randomProduct()._id}}" >View Product <i class="fa-solid fa-arrow-right"></i>  </button>
     </div>
     <div class="photo">
-      <img [src]="randomProduct()?.thumbnail" (error)="randomProduct().thumbnail = '/nophoto.jpg' " alt="" />
+      <img [src]="$safeNavigationMigration(randomProduct()?.thumbnail)" (error)="randomProduct().thumbnail = '/nophoto.jpg' " alt="" />
     </div>
   </main>
  }
