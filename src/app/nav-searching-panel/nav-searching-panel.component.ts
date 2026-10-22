@@ -1,18 +1,16 @@
 import {
   Component,
-  ElementRef,
-  Input,
-  OnChanges,
   signal,
-  SimpleChanges,
-  ViewChild,
-  ChangeDetectionStrategy
+  ChangeDetectionStrategy,
+  input,
 } from '@angular/core';
 import { ProductsAreaService } from '../services/products-area.service';
 import { CommonModule } from '@angular/common';
-import { RouterLink } from "@angular/router";
-import { SpinnerComponent } from "../spinner/spinner.component";
+import { RouterLink } from '@angular/router';
+import { SpinnerComponent } from '../spinner/spinner.component';
 import { ToolsService } from '../services/tools.service';
+import { toObservable } from '@angular/core/rxjs-interop';
+import { debounceTime, distinctUntilChanged, filter, switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-nav-searching-panel',
@@ -21,24 +19,28 @@ import { ToolsService } from '../services/tools.service';
   changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './nav-searching-panel.component.css',
 })
-export class NavSearchingPanelComponent implements OnChanges {
-  constructor(private service: ProductsAreaService, public tools: ToolsService) {}
-  @Input() searchWord: string = '';
+export class NavSearchingPanelComponent {
+  constructor(
+    private service: ProductsAreaService,
+    public tools: ToolsService,
+  ) {
+    this.searchingFn();
+  }
+  searchWord = input<string>('');
 
   searchedList = signal<any[]>([]);
-  isSectionShown: boolean = false;
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if (this.searchWord !== '') {
-      this.isSectionShown = true;
-      setTimeout(() => {
-        this.service
-          .getSearchedData(this.searchWord)
-          .subscribe((data: any) => this.searchedList.set(data.products));
-          
-      }, 1500);
-    } else {
-      this.isSectionShown = false;
-    }
+  searchingFn() {
+    toObservable(this.searchWord)
+      .pipe(
+        debounceTime(500),
+        distinctUntilChanged(),
+        filter((text) => text != ''),
+        switchMap((text: string) => this.service.getSearchedData(text)),
+      )
+      .subscribe((data: any) => {
+        this.tools.isSectionShown.set(true);
+        this.searchedList.set(data.products);
+      });
   }
 }

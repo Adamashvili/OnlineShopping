@@ -1,4 +1,4 @@
-import { AfterContentChecked, Component, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
+import { AfterContentChecked, Component, OnInit, signal, ChangeDetectionStrategy, HostListener } from '@angular/core';
 import { SignInComponent } from '../sign-in/sign-in.component';
 import { SignUpComponent } from '../sign-up/sign-up.component';
 import { ScrollingDirective } from '../../directives/scrolling.directive';
@@ -46,7 +46,7 @@ export class NavbarComponent implements OnInit {
     this.tools.isSignedIn.subscribe((info: boolean) => this.isSignShow = info);
     this.tools.isRegistered.subscribe((info: boolean) => this.isRegisterShow = info);
     this.profileInfoNav();
-    this.cartServ.getCart().subscribe( (cartData:any) => this.tools.cartQuantity.set(cartData.products.length))
+   this._cookie.get("user") ? this.cartServ.getCart().subscribe( (cartData:any) => this.tools.cartQuantity.set(cartData.products.length)) : null
   }
 
   public isSignShow: boolean = false;
@@ -55,7 +55,9 @@ export class NavbarComponent implements OnInit {
   public isProfileInfoShown: boolean = false;
   public isCartShown: boolean = false;
   public userInfoNAV = signal<any>({});
-  public searchWord: string = '';
+  public searchWord = signal<string>("");
+
+  
 
   signOut() {
     this._cookie.deleteAll();

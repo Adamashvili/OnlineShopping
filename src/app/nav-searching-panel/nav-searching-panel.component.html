@@ -1,4 +1,4 @@
-<section [class.showSection]="isSectionShown">
+<section [class.showSection]="tools.isSectionShown()">
   <div class="searchCard">
     <h4>Searched Products</h4>
     @if (tools.loader()) {
@@ -8,7 +8,7 @@
         <div
           class="card"
           routerLink="/details/{{ item._id }}"
-          (click)="isSectionShown = false"
+          (click)="tools.isSectionShown.set(false)"
         >
           <i class="fa-solid fa-angle-right"></i>
           <img
@@ -26,6 +26,9 @@
             </h3>
           </div>
         </div>
+      }
+      @empty {
+        <h4 style="color: darkred;">Products not found</h4>
       }
     }
   </div>

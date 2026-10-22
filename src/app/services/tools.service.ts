@@ -6,8 +6,6 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class ToolsService {
 
-  constructor() { }
-
   public isErrSMS: BehaviorSubject<boolean> = new BehaviorSubject(false)
   public isSignedIn: BehaviorSubject<boolean> = new BehaviorSubject(false)
   public isRegistered: BehaviorSubject<boolean> = new BehaviorSubject(false)
@@ -15,4 +13,5 @@ export class ToolsService {
   public userNavbarInfo = signal<any>({})
   public cartQuantity = signal<number>(0)
   public loader = signal<boolean>(false)
+  public isSectionShown = signal<boolean>(false)
 }
